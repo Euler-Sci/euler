@@ -1,42 +1,39 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
+import Logo from "../assets/svg/euler.svg"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const HeaderDiv = styled.nav`
+background-color: rgba(130, 167, 166, 0.5);
+padding: 1rem;
+display: flex;
+position: absolute;
+width: 100%;
+justify-content: center;
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+a {
+  text-decoration: none;
+  color: white;
+  font-family: Mulish;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin: 1rem 3rem;
 }
+`
 
-Header.defaultProps = {
-  siteTitle: ``,
+const Header = () => {
+  console.log(Logo);
+  return (
+    <HeaderDiv>
+      <Logo style={{fill: "white", width: "5rem", height: "auto"}}/>
+      <Link to="/">Home</Link>
+      <Link to="/">Services</Link>
+      <Link to="/">About</Link>
+      <Link to="/">Contact</Link>
+    </HeaderDiv>
+  )
 }
 
 export default Header

@@ -12,21 +12,8 @@ import styled from "styled-components"
 
 import "./layout.css"
 import Hero from "../images/euler_hero.png"
+import Header from "./header"
 
-const Header = styled.nav`
-background-color: rgba(130, 167, 166, 0.5);
-padding: 1rem;
-display: flex;
-position: absolute;
-width: 100%;
-a {
-  text-decoration: none;
-  color: white;
-  font-family: Mulish;
-  text-transform: uppercase;
-  font-size: 1.6rem;
-}
-`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -41,9 +28,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header>
-        <Link to="/">Home</Link>
-      </Header>
+      <Header />
       <img src={Hero} />
       <main>{children}</main>
       <footer>
