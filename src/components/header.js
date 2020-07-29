@@ -10,6 +10,7 @@ display: flex;
 position: absolute;
 width: 100%;
 justify-content: center;
+z-index: 100;
 
 a {
   text-decoration: none;

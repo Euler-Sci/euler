@@ -7,29 +7,14 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
 
 import "./layout.css"
-import Hero from "../images/euler_hero.png"
 import Header from "./header"
 
-
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Header />
-      <img src={Hero} />
+      <Header/>
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
