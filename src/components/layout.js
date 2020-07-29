@@ -7,10 +7,26 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 
-import Header from "./header"
 import "./layout.css"
+import Hero from "../images/euler_hero.png"
+
+const Header = styled.nav`
+background-color: rgba(130, 167, 166, 0.5);
+padding: 1rem;
+display: flex;
+position: absolute;
+width: 100%;
+a {
+  text-decoration: none;
+  color: white;
+  font-family: Mulish;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,21 +41,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <Header>
+        <Link to="/">Home</Link>
+      </Header>
+      <img src={Hero} />
+      <main>{children}</main>
+      <footer>
+        © {new Date().getFullYear()}, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </footer>
     </>
   )
 }
