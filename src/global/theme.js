@@ -1,4 +1,7 @@
 export const theme = {
+  transition1: "0.2s",
+
+  /* colors */
   red: "red",
   white: "white",
 
