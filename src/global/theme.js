@@ -2,6 +2,8 @@ export const theme = {
   red: "red",
   white: "white",
 
+  salmon: "#fca17d",
+  peach: "#F9DBBD",
   taupe: "#785964",
   morningBlue: "#82a7a6",
   black: "#000000",
@@ -12,10 +14,9 @@ export const theme = {
     return this.white;
   },
   get secondary() {
-    return this.taupe;
+    return this.lilac;
   },
   get highlight() {
-    return this.red;
+    return this.salmon;
   }
-
 }

@@ -20,33 +20,50 @@ top: 35%;
 left: 25%;
 transform: translate(-50%, -50%);
 color: ${props => props.theme.primary};
-width: 30rem;
 h1, h2, h3 {
-  font-family: Mulish;
+    width: 30rem;
+    font-family: Mulish;
 }
 p {
-  font-family: Mulish;
-  color: ${props => props.theme.secondary}
+    width: 40rem;
+    font-family: Mulish;
+    font-size: 1.2rem;
+    color: ${props => props.theme.secondary};
+    padding-bottom: 1rem;
 }
 `
 const Highlight = styled.span`
 color: ${props => props.theme.highlight};
 font-weight: bold;
 `
+const Button = styled.button`
+background-color: ${props => props.theme.gunmetal};
+color: ${props => props.theme.primary};
+&:hover {
+    background-color: ${props => props.theme.lilac}
+}
+`
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Hero>
-      <HeroText>
-        <h1>
-          Dedicated to beauty and elegance in code.
-        </h1>
-        <p>
-          Euler ( <Highlight>/oy·lər/</Highlight> ) is a conglomerate of expert engineers who can help you with any problem.
-        </p>
-      </HeroText>
-    </Hero>
-  </Layout>
+    <Layout>
+        <SEO title="Home" />
+        <Hero>
+            <HeroText>
+                <h1>
+                    The elegance of mathematics in your code infrastructure.
+                </h1>
+                <p>
+                    Euler ( <Highlight>/oy·lər/</Highlight> ) is a constellation
+                    of expert engineers dedicated to bringing the beauty and
+                    elegance of <Highlight>Leonhard Euler</Highlight> to your
+                    code.
+                </p>
+                <Button>
+                    Hire Euler now.
+                </Button>
+            </HeroText>
+        </Hero>
+    </Layout>
 )
 
 export default IndexPage
+
