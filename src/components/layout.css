@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Mulish:ital,wght@0,400;0,700;1,400;1,700&family=Recursive:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html, body {
     font-family: Mulish;
     background-color: black;
+    color: white;
 }
 
 h1 {
@@ -25,7 +27,7 @@ h6 {
 }
 p {
     font-size: 1.2rem;
-    margin-top: 0.35rem;
+    margin: 1rem 0;
 }
 button {
     border: none;

@@ -45,7 +45,7 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
   });
-  const shrunkStyle={ padding: "0.5rem 0" }
+  const shrunkStyle={ padding: "0" }
   const style = shrink ? shrunkStyle : {};
   const logoSize = shrink ? "3rem" : "5rem";
 
