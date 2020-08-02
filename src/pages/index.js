@@ -19,14 +19,19 @@ position: absolute;
 top: 35%;
 left: 25%;
 transform: translate(-50%, -50%);
-color: ${props => props.theme.white};
+color: ${props => props.theme.primary};
 width: 30rem;
 h1, h2, h3 {
   font-family: Mulish;
 }
 p {
   font-family: Mulish;
+  color: ${props => props.theme.secondary}
 }
+`
+const Highlight = styled.span`
+color: ${props => props.theme.highlight};
+font-weight: bold;
 `
 const IndexPage = () => (
   <Layout>
@@ -37,7 +42,7 @@ const IndexPage = () => (
           Dedicated to beauty and elegance in code.
         </h1>
         <p>
-          Euler ( <span style={{ color: "red", fontWeight: "bold" }}>/oy·lər/</span> ) is a conglomerate of expert engineers who can help you with any problem.
+          Euler ( <Highlight>/oy·lər/</Highlight> ) is a conglomerate of expert engineers who can help you with any problem.
         </p>
       </HeroText>
     </Hero>
