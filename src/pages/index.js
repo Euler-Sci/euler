@@ -15,18 +15,31 @@ position: relative;
 height: 1080px;
 `
 const HeroText = styled.div`
-text-align: center;
 position: absolute;
-top: 50%;
-left: 50%;
+top: 35%;
+left: 25%;
 transform: translate(-50%, -50%);
-color: white;
+color: ${props => props.theme.white};
+width: 30rem;
+h1, h2, h3 {
+  font-family: Mulish;
+}
+p {
+  font-family: Mulish;
+}
 `
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Hero>
-      <HeroText>/oy·lər/</HeroText>
+      <HeroText>
+        <h1>
+          Dedicated to beauty and elegance in code.
+        </h1>
+        <p>
+          Euler ( <span style={{ color: "red", fontWeight: "bold" }}>/oy·lər/</span> ) is a conglomerate of expert engineers who can help you with any problem.
+        </p>
+      </HeroText>
     </Hero>
   </Layout>
 )
