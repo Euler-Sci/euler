@@ -4,8 +4,9 @@ import styled from "styled-components"
 import Logo from "../assets/svg/euler.svg"
 
 const HeaderDiv = styled.nav`
-background-color: rgba(130, 167, 166, 0.5);
-padding: 1rem;
+/* The last 2 digits in background-color are transparency */
+background-color: ${props => props.theme.morningBlue}60;
+padding: 1.5rem 0;
 display: flex;
 position: absolute;
 width: 100%;
@@ -14,10 +15,10 @@ z-index: 100;
 
 a {
   text-decoration: none;
-  color: white;
+  color: ${props => props.theme.primary};
   font-family: Mulish;
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: bold;
   letter-spacing: 3px;
   margin: 1rem 3rem;
