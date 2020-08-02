@@ -11,6 +11,7 @@ export const theme = {
   morningBlue: "#82a7a6",
   black: "#000000",
   gunmetal: "#113241",
+  darkGunmetal: "#081920",
   lilac: "#B796AC",
 
   get primary() {
