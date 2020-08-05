@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
@@ -16,6 +16,21 @@ position: relative;
 height: 1080px;
 
 border-bottom: 1rem solid ${props => props.theme.gunmetal};
+`
+const Arrow = styled.div`
+width: 0;
+height: 0;
+margin: 0 auto;
+border-left: 0rem solid transparent;
+border-right: 0rem solid transparent;
+border-top: 0rem solid ${props => props.theme.gunmetal};
+
+transition: border 0.5s;
+&.open {
+  border-top: 8rem solid ${props => props.theme.gunmetal};
+  border-left: 10rem solid transparent;
+  border-right: 10rem solid transparent;
+}
 `
 const HeroText = styled.div`
 position: absolute;
@@ -60,39 +75,58 @@ display: block;
 margin: 10rem auto;
 width: 500px;
 `
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Hero>
-      <HeroText>
-        <h1>
-          The elegance of mathematics solving your problems.
-        </h1>
-        <p>
-          Euler ( <Highlight>/oy·lər/</Highlight> ) is a constellation
-          of expert engineers dedicated to bringing the beauty and
-          elegance of <Highlight>Leonhard Euler</Highlight> to your
-          code.
-        </p>
-        <Button>
-          Hire Euler now.
-        </Button>
-      </HeroText>
-    </Hero>
+const IndexPage = () => {
+  const [arrowActive, setArrowActive] = useState(false);
 
-    <Story>
-      <EquationImg src={Equation} />
-      <p>
-        This equation, <Highlight>Euler's identity</Highlight>, exhibits the
-        elegance and simplicity of the technical solutions that we strive for.
-        Of course, real systems with practicality are always products of
-        trade-offs, but <Highlight>balance</Highlight>,{' '}
-        <Highlight>maintainability</Highlight>,{' '}
-        <Highlight>robustness</Highlight>, and <Highlight>cost</Highlight> are
-        our lodestars.
-      </p>
-    </Story>
-  </Layout>
-)
+  const onScroll = (e) => {
+    const distanceY = window.pageYOffset || document.documentElement.scrollTop;
+    const activeOn = 400;
+    if (distanceY >= activeOn)
+      setArrowActive(true);
+    else
+      setArrowActive(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  });
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Hero>
+        <HeroText>
+          <h1>
+            The elegance of mathematics solving your problems.
+          </h1>
+          <p>
+            Euler ( <Highlight>/oy·lər/</Highlight> ) is a constellation
+            of expert engineers dedicated to bringing the beauty and
+            elegance of <Highlight>Leonhard Euler</Highlight> to your
+            code.
+          </p>
+          <Button>
+            Hire Euler now.
+          </Button>
+        </HeroText>
+      </Hero>
+
+      <Arrow className={arrowActive ? 'open' : ''}/>
+
+      <Story>
+        <EquationImg src={Equation} />
+        <p>
+          This equation, <Highlight>Euler's identity</Highlight>, exhibits the
+          elegance and simplicity of the technical solutions that we strive for.
+          Of course, real systems with practicality are always products of
+          trade-offs, but <Highlight>balance</Highlight>,{' '}
+          <Highlight>maintainability</Highlight>,{' '}
+          <Highlight>robustness</Highlight>, and <Highlight>cost</Highlight> are
+          our lodestars.
+        </p>
+      </Story>
+    </Layout>
+  )
+}
 
 export default IndexPage
