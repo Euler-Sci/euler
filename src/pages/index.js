@@ -96,6 +96,7 @@ display: flex;
 justify-content: center;
 padding: 1rem;
 padding-top: 0;
+padding-bottom: 5rem;
 `
 const CardsArrow = styled(Arrow)`
 border-top: 0rem solid ${props => props.theme.black};
@@ -107,6 +108,7 @@ const Card = styled.div`
 width: 25rem;
 margin: 2rem;
 padding: 1rem;
+padding-top: 5rem;
 
 text-align: center;
 h1 {
@@ -141,8 +143,8 @@ const IndexPage = () => {
 
   const onScroll = (e) => {
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-    const equationActiveOn = 800;
-    const cardsActiveOn = 1700;
+    const equationActiveOn = 600;
+    const cardsActiveOn = 1600;
     if (distanceY >= equationActiveOn)
       setEquationArrowActive(true);
     else
