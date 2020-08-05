@@ -125,9 +125,8 @@ ul, p {
 }
 `
 const Icon = styled(FontAwesomeIcon)`
-font-size: 4rem;
 margin: 2rem;
-color: ${props => props.theme.lilac};
+color: ${props => props.theme.highlight};
 `
 
 /****************************************************************************/
@@ -157,6 +156,8 @@ const IndexPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
   });
+
+  const iconSize = "5x";
 
   return (
     <Layout>
@@ -196,7 +197,7 @@ const IndexPage = () => {
         <CardsArrow className={cardsArrowActive ? 'open' : ''}/>
         <Cards>
           <Card>
-            <Icon icon={faMicroscope} />
+            <Icon icon={faMicroscope} size={iconSize} />
             <h1>Scientific Computing</h1>
             <ul>
               <li>Image Processing</li>
@@ -207,7 +208,7 @@ const IndexPage = () => {
             </ul>
           </Card>
           <Card>
-            <Icon icon={faMagic} />
+            <Icon icon={faMagic} size={iconSize} />
             <h1>Automation</h1>
             <ul>
               <li>CAD/FEA Design</li>
@@ -218,7 +219,7 @@ const IndexPage = () => {
             </ul>
           </Card>
           <Card>
-            <Icon icon={faClipboardList} />
+            <Icon icon={faClipboardList} size={iconSize} />
             <h1>Consultation</h1>
             <p>
               Available for technical review of an idea, support for drafting a
