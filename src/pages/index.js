@@ -125,9 +125,9 @@ ul, p {
 }
 `
 const Icon = styled(FontAwesomeIcon)`
-font-size: 3rem;
+font-size: 4rem;
 margin: 2rem;
-color: ${props => props.theme.highlight};
+color: ${props => props.theme.lilac};
 `
 
 /****************************************************************************/
