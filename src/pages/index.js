@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicroscope, faMagic, faClipboardList } from '@fortawesome/free-solid-svg-icons'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Equation from "../images/equation.png"
+import EquationPNG from "../images/equation.png"
+import { Highlight } from "../global/elements.js"
 
-
+/********************
+ * Hero image stuff *
+ ********************/
 const Hero = styled.div`
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/euler_hero.png");
 background-position: center;
@@ -21,17 +26,16 @@ const Arrow = styled.div`
 width: 0;
 height: 0;
 margin: 0 auto;
+transition: border 0.5s;
 border-left: 0rem solid transparent;
 border-right: 0rem solid transparent;
-border-top: 0rem solid ${props => props.theme.gunmetal};
 
-transition: border 0.5s;
 &.open {
-  border-top: 8rem solid ${props => props.theme.gunmetal};
   border-left: 10rem solid transparent;
   border-right: 10rem solid transparent;
 }
 `
+
 const HeroText = styled.div`
 position: absolute;
 top: 35%;
@@ -49,10 +53,6 @@ p {
   color: ${props => props.theme.secondary};
 }
 `
-const Highlight = styled.span`
-color: ${props => props.theme.highlight};
-font-weight: bold;
-`
 const Button = styled.button`
 background-color: ${props => props.theme.gunmetal};
 color: ${props => props.theme.primary};
@@ -61,9 +61,12 @@ transition: background-color ${props => props.theme.transition1};
   background-color: ${props => props.theme.lilac}
 }
 `
+/******************
+ * Equation Board *
+ ******************/
 
-const Story = styled.div`
-height: 50rem;
+const Equation = styled.div`
+margin-bottom: 20rem;
 p {
   width: 800px;
   margin: 0 auto;
@@ -75,16 +78,80 @@ display: block;
 margin: 10rem auto;
 width: 500px;
 `
+const EquationArrow = styled(Arrow)`
+border-top: 0rem solid ${props => props.theme.gunmetal};
+&.open {
+  border-top: 8rem solid ${props => props.theme.gunmetal};
+}
+`
+
+/*********
+ * Cards *
+ *********/
+const CardsParent = styled.div`
+background-color: ${props => props.theme.gunmetal};
+`
+const Cards = styled.div`
+display: flex;
+justify-content: center;
+padding: 1rem;
+padding-top: 0;
+`
+const CardsArrow = styled(Arrow)`
+border-top: 0rem solid ${props => props.theme.black};
+&.open {
+  border-top: 8rem solid ${props => props.theme.black};
+}
+`
+const Card = styled.div`
+width: 25rem;
+margin: 2rem;
+padding: 1rem;
+
+text-align: center;
+h1 {
+  margin-bottom: 3rem;
+  color: ${props => props.theme.secondary};
+}
+p {
+  line-height: 2rem;
+}
+ul, p {
+  text-align: left;
+  font-size: 1.5rem;
+  li {
+    margin: 2rem;
+  }
+}
+`
+const Icon = styled(FontAwesomeIcon)`
+font-size: 3rem;
+margin: 2rem;
+color: ${props => props.theme.highlight};
+`
+
+/****************************************************************************/
+
+/**************************
+ * Actual Index Component *
+ **************************/
+
 const IndexPage = () => {
-  const [arrowActive, setArrowActive] = useState(false);
+  const [equationArrowActive, setEquationArrowActive] = useState(false);
+  const [cardsArrowActive, setCardsArrowActive] = useState(false);
 
   const onScroll = (e) => {
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-    const activeOn = 400;
-    if (distanceY >= activeOn)
-      setArrowActive(true);
+    const equationActiveOn = 800;
+    const cardsActiveOn = 1700;
+    if (distanceY >= equationActiveOn)
+      setEquationArrowActive(true);
     else
-      setArrowActive(false);
+      setEquationArrowActive(false);
+    if (distanceY >= cardsActiveOn)
+      setCardsArrowActive(true);
+    else
+      setCardsArrowActive(false);
   }
 
   useEffect(() => {
@@ -93,8 +160,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
-      <Hero>
+      <SEO title="Home" /> <Hero>
         <HeroText>
           <h1>
             The elegance of mathematics solving your problems.
@@ -111,10 +177,10 @@ const IndexPage = () => {
         </HeroText>
       </Hero>
 
-      <Arrow className={arrowActive ? 'open' : ''}/>
+      <EquationArrow className={equationArrowActive ? 'open' : ''}/>
 
-      <Story>
-        <EquationImg src={Equation} />
+      <Equation>
+        <EquationImg src={EquationPNG} />
         <p>
           This equation, <Highlight>Euler's identity</Highlight>, exhibits the
           elegance and simplicity of the technical solutions that we strive for.
@@ -124,7 +190,44 @@ const IndexPage = () => {
           <Highlight>robustness</Highlight>, and <Highlight>cost</Highlight> are
           our lodestars.
         </p>
-      </Story>
+      </Equation>
+
+      <CardsParent>
+        <CardsArrow className={cardsArrowActive ? 'open' : ''}/>
+        <Cards>
+          <Card>
+            <Icon icon={faMicroscope} />
+            <h1>Scientific Computing</h1>
+            <ul>
+              <li>Image Processing</li>
+              <li>Signal Processing</li>
+              <li>Speed Optimization</li>
+              <li>Instrument Control</li>
+              <li>Desktop Applications</li>
+            </ul>
+          </Card>
+          <Card>
+            <Icon icon={faMagic} />
+            <h1>Automation</h1>
+            <ul>
+              <li>CAD/FEA Design</li>
+              <li>Actuator & Sensor Selection</li>
+              <li>Control System Implementation</li>
+              <li>PCBA & Microcontroller Prototyping</li>
+              <li>Firmware/Software</li>
+            </ul>
+          </Card>
+          <Card>
+            <Icon icon={faClipboardList} />
+            <h1>Consultation</h1>
+            <p>
+              Available for technical review of an idea, support for drafting a
+              proposal or grant, or small projects that require a focused amount
+              of development work.
+            </p>
+          </Card>
+        </Cards>
+      </CardsParent>
     </Layout>
   )
 }
