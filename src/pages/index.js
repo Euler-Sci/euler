@@ -1,9 +1,10 @@
 import React from "react"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Equation from "../images/equation.png"
 
-import styled from "styled-components"
 
 const Hero = styled.div`
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/euler_hero.png");
@@ -48,18 +49,16 @@ transition: background-color ${props => props.theme.transition1};
 
 const Story = styled.div`
 height: 50rem;
+p {
+  width: 800px;
+  margin: 0 auto;
+  font-size: 2rem;
+}
 `
-const Equation = styled.h1`
-text-align: center;
-font-style: italic;
-font-family: Amaranth;
-margin: 10rem 0;
-`
-const Sup = styled.span`
-vertical-align: super;
-font-size: smaller;
-font-family: Merriweather;
-font-style: italic;
+const EquationImg = styled.img`
+display: block;
+margin: 10rem auto;
+width: 500px;
 `
 const IndexPage = () => (
   <Layout>
@@ -82,10 +81,18 @@ const IndexPage = () => (
     </Hero>
 
     <Story>
-      <Equation>e<Sup>iπ</Sup> + 1 = 0</Equation>
+      <EquationImg src={Equation} />
+      <p>
+        This equation, <Highlight>Euler's identity</Highlight>, exhibits the
+        elegance and simplicity of the technical solutions that we strive for.
+        Of course, real systems with practicality are always products of
+        trade-offs, but <Highlight>balance</Highlight>,{' '}
+        <Highlight>maintainability</Highlight>,{' '}
+        <Highlight>robustness</Highlight>, and <Highlight>cost</Highlight> are
+        our lodestars.
+      </p>
     </Story>
   </Layout>
 )
 
 export default IndexPage
-
