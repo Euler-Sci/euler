@@ -6,11 +6,10 @@ import { faMicroscope, faMagic, faClipboardList } from '@fortawesome/free-solid-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import EquationPNG from "../images/equation.png"
-import { Highlight } from "../global/elements.js"
+import { Arrow, Highlight } from "../global/elements.js"
 
 /* For services panel */
 import { CardsParent, Cards, Card } from '../global/cards'
-import Arrow from '../global/arrow'
 
 /********************
  * Hero image stuff *
