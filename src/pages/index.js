@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
@@ -28,12 +29,10 @@ height: 1080px;
 
 border-bottom: 1rem solid ${props => props.theme.gunmetal};
 `
-
 const HeroText = styled.div`
 position: absolute;
 top: 35%;
-left: 25%;
-transform: translate(-50%, -50%);
+left: 25%; transform: translate(-50%, -50%);
 color: ${props => props.theme.primary};
 h1, h2, h3 {
   width: 30rem;
@@ -46,40 +45,132 @@ p {
   color: ${props => props.theme.secondary};
 }
 `
-const Button = styled.button`
+const HireLink = styled(Link)`
+margin: 1rem;
+padding: 15px 32px;
+display: inline-block;
+cursor: pointer;
+
+font-size: 1.4rem;
+font-family: Roboto;
+text-decoration: none;
+
 background-color: ${props => props.theme.gunmetal};
 color: ${props => props.theme.primary};
 transition: background-color ${props => props.theme.transition1};
 &:hover {
-  background-color: ${props => props.theme.lilac}
+    background-color: ${props => props.theme.lilac};
 }
 `
-/*********
- * Arrow *
- *********/
+const HeroPanel = () => {
+  return (
+    <Hero>
+      <HeroText>
+        <h1>The elegance of mathematics solving your problems.</h1>
+        <p>
+            Euler ( <Highlight>/oy·lər/</Highlight> ) is a constellation
+            of expert engineers dedicated to bringing the beauty and
+            elegance of <Highlight>Leonhard Euler</Highlight> to your
+            code.
+        </p>
+        <HireLink to='/contact' >Hire Euler now.</HireLink>
+      </HeroText>
+    </Hero>
+  )
+}
+
+/******************
+* Equation Panel *
+******************/
 const EquationArrow = styled(Arrow)`
 border-top: 0rem solid ${props => props.theme.gunmetal};
 &.open {
   border-top: 8rem solid ${props => props.theme.gunmetal};
 }
 `
+const EquationPanel = () => {
+  return (
+    <Equation>
+      <EquationImg src={EquationPNG} />
+      <p>
+        This equation, <Highlight>Euler's identity</Highlight>, exhibits
+        the elegance and simplicity of the technical solutions that we
+        strive for.
+      </p>
+      <br />
+      <br />
+      <p>
+        Of course, real systems with practicality are always products of
+        trade-offs, but <Highlight>balance</Highlight>,{' '}
+        <Highlight>maintainability</Highlight>,{' '}
+        <Highlight>robustness</Highlight>, and{' '}
+        <Highlight>cost</Highlight> are our lodestars.
+      </p>
+    </Equation>
+  )
+}
+
+/***************
+* Cards Panel *
+***************/
+
 const CardsArrow = styled(Arrow)`
 border-top: 0rem solid ${props => props.theme.black};
 &.open {
   border-top: 8rem solid ${props => props.theme.black};
 }
 `
-
 const Icon = styled(FontAwesomeIcon)`
 margin: 2rem;
 color: ${props => props.theme.highlight};
 `
+const CardsPanel = ({ active }) => {
+  const iconSize = "5x";
+  return (
+    <CardsParent>
+      <CardsArrow className={active ? 'open' : ''}/>
+      <Cards>
+        <Card>
+          <Icon icon={faMicroscope} size={iconSize} />
+          <h1>Scientific Computing</h1>
+          <ul>
+            <li>Image Processing</li>
+            <li>Signal Processing</li>
+            <li>Speed Optimization</li>
+            <li>Instrument Control</li>
+            <li>Desktop Applications</li>
+          </ul>
+        </Card>
+        <Card>
+          <Icon icon={faMagic} size={iconSize} />
+          <h1>Automation</h1>
+          <ul>
+            <li>CAD/FEA Design</li>
+            <li>Actuator & Sensor Selection</li>
+            <li>Control System Implementation</li>
+            <li>PCBA & Microcontroller Prototyping</li>
+            <li>Firmware/Software</li>
+          </ul>
+        </Card>
+        <Card>
+          <Icon icon={faClipboardList} size={iconSize} />
+          <h1>Consultation</h1>
+          <p>
+            Available for technical review of an idea, support for drafting a
+            proposal or grant, or small projects that require a focused amount
+            of development work.
+          </p>
+        </Card>
+      </Cards>
+    </CardsParent>
+  )
+}
 
 /****************************************************************************/
 
 /**************************
- * Actual Index Component *
- **************************/
+* Actual Index Component *
+**************************/
 
 const IndexPage = () => {
   const [equationArrowActive, setEquationArrowActive] = useState(false);
@@ -103,79 +194,18 @@ const IndexPage = () => {
     window.addEventListener('scroll', onScroll);
   });
 
-  const iconSize = "5x";
 
   return (
     <Layout>
       <SEO title="Home" />
-      <Hero>
-        <HeroText>
-          <h1>
-            The elegance of mathematics solving your problems.
-          </h1>
-          <p>
-            Euler ( <Highlight>/oy·lər/</Highlight> ) is a constellation
-            of expert engineers dedicated to bringing the beauty and
-            elegance of <Highlight>Leonhard Euler</Highlight> to your
-            code.
-          </p>
-          <Button>
-            Hire Euler now.
-          </Button>
-        </HeroText>
-      </Hero>
 
-      <EquationArrow className={equationArrowActive ? 'open' : ''}/>
+      <HeroPanel />
 
-      <Equation>
-        <EquationImg src={EquationPNG} />
-        <p>
-          This equation, <Highlight>Euler's identity</Highlight>, exhibits the
-          elegance and simplicity of the technical solutions that we strive for.
-          Of course, real systems with practicality are always products of
-          trade-offs, but <Highlight>balance</Highlight>,{' '}
-          <Highlight>maintainability</Highlight>,{' '}
-          <Highlight>robustness</Highlight>, and <Highlight>cost</Highlight> are
-          our lodestars.
-        </p>
-      </Equation>
+      <EquationArrow className={equationArrowActive ? 'open' : ''} />
+      <EquationPanel />
 
-      <CardsParent>
-        <CardsArrow className={cardsArrowActive ? 'open' : ''}/>
-        <Cards>
-          <Card>
-            <Icon icon={faMicroscope} size={iconSize} />
-            <h1>Scientific Computing</h1>
-            <ul>
-              <li>Image Processing</li>
-              <li>Signal Processing</li>
-              <li>Speed Optimization</li>
-              <li>Instrument Control</li>
-              <li>Desktop Applications</li>
-            </ul>
-          </Card>
-          <Card>
-            <Icon icon={faMagic} size={iconSize} />
-            <h1>Automation</h1>
-            <ul>
-              <li>CAD/FEA Design</li>
-              <li>Actuator & Sensor Selection</li>
-              <li>Control System Implementation</li>
-              <li>PCBA & Microcontroller Prototyping</li>
-              <li>Firmware/Software</li>
-            </ul>
-          </Card>
-          <Card>
-            <Icon icon={faClipboardList} size={iconSize} />
-            <h1>Consultation</h1>
-            <p>
-              Available for technical review of an idea, support for drafting a
-              proposal or grant, or small projects that require a focused amount
-              of development work.
-            </p>
-          </Card>
-        </Cards>
-      </CardsParent>
+      <CardsPanel active={cardsArrowActive} />
+
     </Layout>
   )
 }
