@@ -10,6 +10,7 @@ import { Highlight } from "../global/elements.js"
 
 /* For services panel */
 import { CardsParent, Cards, Card } from '../global/cards'
+import Arrow from '../global/arrow'
 
 /********************
  * Hero image stuff *
@@ -24,19 +25,6 @@ position: relative;
 height: 1080px;
 
 border-bottom: 1rem solid ${props => props.theme.gunmetal};
-`
-const Arrow = styled.div`
-width: 0;
-height: 0;
-margin: 0 auto;
-transition: border 0.5s;
-border-left: 0rem solid transparent;
-border-right: 0rem solid transparent;
-
-&.open {
-  border-left: 10rem solid transparent;
-  border-right: 10rem solid transparent;
-}
 `
 
 const HeroText = styled.div`
