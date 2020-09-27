@@ -57,9 +57,9 @@ const Header = () => {
     <HeaderDiv style={style}>
       <LogoStyled style={{ width: logoSize }}/>
       <Link to="/">Home</Link>
-      <Link to="/">Services</Link>
-      <Link to="/">About</Link>
-      <Link to="/">Contact</Link>
+      <Link to="/services">Services</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
     </HeaderDiv>
   )
 }
