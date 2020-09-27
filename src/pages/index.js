@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react"
-import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMicroscope, faMagic, faClipboardList } from '@fortawesome/free-solid-svg-icons'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import EquationPNG from "../images/equation.png"
-import { Arrow, Highlight } from "../global/elements.js"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import { Arrow, Highlight } from '../global/elements.js';
 
 /* For services panel */
-import { CardsParent, Cards, Card } from '../global/cards'
+import { CardsParent, Cards, Card } from '../global/cards';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicroscope, faMagic, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+
+/* for about panel */
+import EquationPNG from '../images/equation.png';
+import { Equation, EquationImg } from '../global/equation';
 
 /********************
  * Hero image stuff *
@@ -51,23 +54,9 @@ transition: background-color ${props => props.theme.transition1};
   background-color: ${props => props.theme.lilac}
 }
 `
-/******************
- * Equation Board *
- ******************/
-
-const Equation = styled.div`
-margin-bottom: 20rem;
-p {
-  width: 800px;
-  margin: 0 auto;
-  font-size: 2rem;
-}
-`
-const EquationImg = styled.img`
-display: block;
-margin: 10rem auto;
-width: 500px;
-`
+/*********
+ * Arrow *
+ *********/
 const EquationArrow = styled(Arrow)`
 border-top: 0rem solid ${props => props.theme.gunmetal};
 &.open {
