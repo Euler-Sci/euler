@@ -8,6 +8,9 @@ import SEO from "../components/seo"
 import EquationPNG from "../images/equation.png"
 import { Highlight } from "../global/elements.js"
 
+/* For services panel */
+import { CardsParent, Cards, Card } from '../global/cards'
+
 /********************
  * Hero image stuff *
  ********************/
@@ -84,48 +87,13 @@ border-top: 0rem solid ${props => props.theme.gunmetal};
   border-top: 8rem solid ${props => props.theme.gunmetal};
 }
 `
-
-/*********
- * Cards *
- *********/
-const CardsParent = styled.div`
-background-color: ${props => props.theme.gunmetal};
-`
-const Cards = styled.div`
-display: flex;
-justify-content: center;
-padding: 1rem;
-padding-top: 0;
-padding-bottom: 5rem;
-`
 const CardsArrow = styled(Arrow)`
 border-top: 0rem solid ${props => props.theme.black};
 &.open {
   border-top: 8rem solid ${props => props.theme.black};
 }
 `
-const Card = styled.div`
-width: 25rem;
-margin: 2rem;
-padding: 1rem;
-padding-top: 5rem;
 
-text-align: center;
-h1 {
-  margin-bottom: 3rem;
-  color: ${props => props.theme.secondary};
-}
-p {
-  line-height: 2rem;
-}
-ul, p {
-  text-align: left;
-  font-size: 1.5rem;
-  li {
-    margin: 2rem;
-  }
-}
-`
 const Icon = styled(FontAwesomeIcon)`
 margin: 2rem;
 color: ${props => props.theme.highlight};
@@ -163,7 +131,8 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" /> <Hero>
+      <SEO title="Home" />
+      <Hero>
         <HeroText>
           <h1>
             The elegance of mathematics solving your problems.
