@@ -1,7 +1,7 @@
-import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
-import styled from "styled-components"
-import Logo from "../assets/svg/euler.svg"
+import { Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Logo from '../assets/svg/euler.svg';
 
 const HeaderDiv = styled.nav`
 background-color: ${props => props.theme.morningBlue}60;
@@ -12,6 +12,7 @@ width: 100%;
 justify-content: center;
 z-index: 100;
 transition: padding ${props => props.theme.transition1} ease-in;
+transition: background-color ${props => props.theme.transition1} ease-in;
 
 a {
   text-decoration: none;
@@ -34,7 +35,7 @@ fill: white;
 transition: width ${props => props.theme.transition1} linear;
 height: auto;
 `
-const Header = () => {
+const Header = ({ theme }) => {
   const [shrink, setShrink] = useState(false);
 
   const onScroll = (e) => {
@@ -49,7 +50,7 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
   });
-  const shrunkStyle={ padding: "0" }
+  const shrunkStyle={ padding: "0", backgroundColor: "#081920" }
   const style = shrink ? shrunkStyle : {};
   const logoSize = shrink ? "3rem" : "5rem";
 
