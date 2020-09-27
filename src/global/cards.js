@@ -1,8 +1,5 @@
 import styled from 'styled-components'
 
-/*********
- * Cards *
- *********/
 const CardsParent = styled.div`
 background-color: ${props => props.theme.gunmetal};
 `
