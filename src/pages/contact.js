@@ -51,7 +51,7 @@ const ContactPage = () => {
         <button type="submit">Send</button>
       </Form>
     </Layout>
-        )
-        }
+  )
+}
 
-        export default ContactPage
+export default ContactPage
