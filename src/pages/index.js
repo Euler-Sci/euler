@@ -239,7 +239,7 @@ const IndexPage = () => {
     window.addEventListener('resize', () => {
       setDimensions([window.innerWidth, window.innerHeight])
    })
-  },[window])
+  },[])
 
   console.log(dimensions);
 
