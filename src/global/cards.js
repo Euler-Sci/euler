@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+
+import { breakpoints } from './breakpoints';
 
 const CardsParent = styled.div`
 background-color: ${props => props.theme.gunmetal};
@@ -13,8 +15,7 @@ padding-bottom: 5rem;
 const Card = styled.div`
 width: 25rem;
 margin: 2rem;
-padding: 1rem;
-padding-top: 5rem;
+padding: 5rem 1rem 0 1rem;
 
 text-align: center;
 h1 {
@@ -29,6 +30,20 @@ ul, p {
   font-size: 1.5rem;
   li {
     margin: 2rem;
+  }
+}
+${breakpoints.vp7} {
+  width: 20rem;
+  padding: 5rem 0.5rem 0 1rem;
+  margin: 0.25rem;
+  h1 {
+    font-size: 2rem;
+  }
+  ul, p {
+    font-size: 1rem;
+    line-height: 1rem;
+    li {
+    }
   }
 }
 `

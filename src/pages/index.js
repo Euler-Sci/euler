@@ -15,6 +15,8 @@ import { faMicroscope, faMagic, faClipboardList } from '@fortawesome/free-solid-
 import EquationPNG from '../images/equation.png';
 import { Equation, EquationImg } from '../global/equation';
 
+import { numbers, breakpoints } from '../global/breakpoints'
+
 /********************
  * Hero image stuff *
  ********************/
@@ -28,11 +30,21 @@ position: relative;
 height: 1080px;
 
 border-bottom: 1rem solid ${props => props.theme.gunmetal};
+
+${breakpoints.vp10} {
+  background-size: 140%;
+  height: 768px;
+}
+${breakpoints.vp10} {
+  background-size: 160%;
+  height: 690px;
+}
 `
 const HeroText = styled.div`
 position: absolute;
 top: 35%;
-left: 25%; transform: translate(-50%, -50%);
+left: 25%;
+transform: translate(-50%, -50%);
 color: ${props => props.theme.primary};
 h1, h2, h3 {
   width: 30rem;
@@ -43,6 +55,22 @@ p {
   font-family: Mulish;
   font-size: 1.2rem;
   color: ${props => props.theme.secondary};
+}
+
+${breakpoints.vp12} {
+  left: 40%;
+}
+${breakpoints.vp10} {
+  top: 45%;
+}
+${breakpoints.vp7} {
+  h1, h2, h3 {
+    width: 25rem;
+    font-size: 2.3rem;
+  }
+  p {
+    width: 30rem;
+  }
 }
 `
 const HireLink = styled(Link)`
@@ -175,11 +203,23 @@ const CardsPanel = ({ active }) => {
 const IndexPage = () => {
   const [equationArrowActive, setEquationArrowActive] = useState(false);
   const [cardsArrowActive, setCardsArrowActive] = useState(false);
+  const [dimensions, setDimensions] = useState([1920, 1080])
 
   const onScroll = (e) => {
+    /* Sets the height from top at which to unfold the triangles, readjusts
+     * height when screen is skinnier */
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-    const equationActiveOn = 600;
-    const cardsActiveOn = 1600;
+
+    let equationActiveOn = 600;
+    if (dimensions[0] <= numbers.vp10)
+      equationActiveOn = 300;
+
+    let cardsActiveOn = 1600;
+    if (dimensions[0] <= numbers.vp10)
+      cardsActiveOn = 1100;
+    else if (dimensions[0] <= numbers.vp7)
+      cardsActiveOn = 400;
+
     if (distanceY >= equationActiveOn)
       setEquationArrowActive(true);
     else
@@ -194,6 +234,14 @@ const IndexPage = () => {
     window.addEventListener('scroll', onScroll);
   });
 
+  useEffect(() => {
+    // Set the dimensions for changing scroll height
+    window.addEventListener('resize', () => {
+      setDimensions([window.innerWidth, window.innerHeight])
+   })
+  },[window])
+
+  console.log(dimensions);
 
   return (
     <Layout>

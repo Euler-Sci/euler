@@ -1,11 +1,13 @@
 import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+import { breakpoints } from '../global/breakpoints';
 import Logo from '../assets/svg/euler.svg';
 
 const HeaderDiv = styled.nav`
 background-color: ${props => props.shrink ? props.theme.darkGunmetal: props.theme.morningBlue + "60"};
-padding: ${props => props.shrink ? 0 : "1.5rem 0"};
+padding: ${props => props.shrink ? "0.25rem" : "1.5rem 0"};
 display: flex;
 position: fixed;
 width: 100%;
@@ -27,6 +29,9 @@ transition: color ${props => props.theme.transition1};
 &:hover {
   color: ${props => props.theme.highlight};
 }
+${breakpoints.vp7} {
+  margin: 0.5rem 1.5rem;
+}
 `
 const LogoStyled = styled(Logo)`
 margin-top: 0.5rem;
@@ -34,7 +39,11 @@ margin-right: 5rem;
 fill: white;
 transition: width ${props => props.theme.transition1} linear;
 height: auto;
-width: ${props => props.shrink ? "3rem" : "5rem"}
+width: ${props => props.shrink ? "3rem" : "5rem"};
+${breakpoints.vp7}{
+  width: ${props => props.shrink ? "2rem" : "5rem"};
+  margin-right: 3rem;
+}
 `
 
 const Header = ({ theme }) => {
