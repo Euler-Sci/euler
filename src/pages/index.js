@@ -39,6 +39,10 @@ ${breakpoints.vp10} {
   background-size: 160%;
   height: 690px;
 }
+${breakpoints.vp10} {
+  background-size: 250%;
+  background-position: right -200px bottom 0;
+}
 `
 const HeroText = styled.div`
 position: absolute;
@@ -70,6 +74,18 @@ ${breakpoints.vp7} {
   }
   p {
     width: 30rem;
+  }
+}
+${breakpoints.vp4} {
+  left: 50%;
+  top: 60%;
+  h1, h2, h3 {
+    width: 15rem;
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1.5rem;
+    width: 20rem;
   }
 }
 `

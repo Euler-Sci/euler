@@ -18,6 +18,12 @@ ${breakpoints.vp7} {
   }
   margin-bottom: 5rem;
 }
+${breakpoints.vp4} {
+  p {
+    font-size: 1.5rem;
+    width: 85%;
+  }
+}
 `
 export const EquationImg = styled.img`
 display: block;
@@ -25,5 +31,8 @@ margin: 10rem auto;
 width: 500px;
 ${breakpoints.vp10} {
   margin: 5rem auto;
+}
+${breakpoints.vp4} {
+  width: 250px;
 }
 `

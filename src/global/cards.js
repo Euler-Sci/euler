@@ -8,6 +8,7 @@ background-color: ${props => props.theme.gunmetal};
 const Cards = styled.div`
 display: flex;
 justify-content: center;
+flex-direction: column;
 padding: 1rem;
 padding-top: 0;
 padding-bottom: 5rem;
@@ -42,8 +43,19 @@ ${breakpoints.vp7} {
   ul, p {
     font-size: 1rem;
     line-height: 1rem;
-    li {
-    }
+  }
+}
+${breakpoints.vp4} {
+  width: 20rem;
+  padding: 5rem 0.5rem 0 1rem;
+  margin: 0.25rem;
+  h1 {
+    font-size: 2rem;
+  }
+  ul, p {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
   }
 }
 `
