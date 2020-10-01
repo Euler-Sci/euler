@@ -107,6 +107,7 @@ const Header = ({ theme }) => {
     setOpen(!open);
   }
   useEffect(() => {
+    // Turn off scroll when menu open
     let x = document.getElementsByTagName("html")[0];
     let style = "visible";
     if (open)
