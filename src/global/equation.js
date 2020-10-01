@@ -22,6 +22,7 @@ ${breakpoints.vp4} {
   p {
     font-size: 1.5rem;
     width: 85%;
+    line-height: 1.7rem;
   }
 }
 `

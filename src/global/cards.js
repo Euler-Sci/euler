@@ -13,6 +13,7 @@ padding-top: 0;
 padding-bottom: 5rem;
 ${breakpoints.vp4} {
   flex-direction: column;
+  padding: 0;
 }
 `
 const Card = styled.div`

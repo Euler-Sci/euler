@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { Highlight } from '../global/elements.js';
+import { Highlight } from '../global/elements';
+import { breakpoints } from '../global/breakpoints'
 
 import { Equation, EquationImg } from '../global/equation';
 import EquationPNG from '../images/equation.png';
@@ -13,13 +14,27 @@ width: 800px;
 margin: 10rem auto;
 font-size: 2rem;
 line-height: 2.3rem;
+${breakpoints.vp7} {
+  width: 600px;
+  margin: 5rem auto;
+}
+${breakpoints.vp4} {
+  font-size: 1.5rem;
+  width: 85%;
+  line-height: 1.7rem;
+}
+`
+const BR = styled.br`
+${breakpoints.vp7} {
+  margin: 2rem;
+}
 `
 
 const AboutPage = () => {
   return (
     <Layout>
       <SEO title="About" />
-      <br /> {/* I don't know why but this is necessary to prevent page breakage */}
+      <BR /> {/* I don't know why but this is necessary to prevent page breakage */}
       <About>
         <Highlight>Euler Scientific</Highlight> is a partnership of software,
         electrical, optics, and
