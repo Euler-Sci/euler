@@ -8,10 +8,12 @@ background-color: ${props => props.theme.gunmetal};
 const Cards = styled.div`
 display: flex;
 justify-content: center;
-flex-direction: column;
 padding: 1rem;
 padding-top: 0;
 padding-bottom: 5rem;
+${breakpoints.vp4} {
+  flex-direction: column;
+}
 `
 const Card = styled.div`
 width: 25rem;
