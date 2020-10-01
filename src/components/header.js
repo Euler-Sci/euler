@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import HamburgerMenu from 'react-hamburger-menu';
 
 import { breakpoints } from '../global/breakpoints';
 import Logo from '../assets/svg/euler.svg';
@@ -16,6 +17,43 @@ z-index: 100;
 transition: padding ${props => props.theme.transition1} ease-in;
 transition: background-color ${props => props.theme.transition1} ease-in;
 `
+const Nav = styled.div`
+margin: 1rem 0;
+
+${breakpoints.vp7} {
+  margin: 0.5rem 0;
+}
+${breakpoints.vp4} {
+  display: none;
+  margin: 0;
+}
+&.active {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  a {
+    margin: 3rem auto;
+  }
+}
+`
+const Menu = styled(HamburgerMenu)`
+margin-top: 0.35rem;
+
+display: none;
+visibility: hidden;
+cursor: pointer;
+z-index: 1;
+
+${breakpoints.vp4}{
+  display: inline-block;
+  visibility: visible;
+}
+`
 const NavLink = styled(Link)`
 text-decoration: none;
 color: ${props => props.theme.secondary};
@@ -24,19 +62,19 @@ text-transform: uppercase;
 font-size: 0.9rem;
 font-weight: bold;
 letter-spacing: 3px;
-margin: 1rem 3rem;
+margin: 0 3rem;
 transition: color ${props => props.theme.transition1};
 &:hover {
   color: ${props => props.theme.highlight};
 }
 ${breakpoints.vp7} {
-  margin: 0.5rem 1.5rem;
+  margin: 0 1.5rem;
 }
 `
 const LogoStyled = styled(Logo)`
 margin-top: 0.5rem;
 margin-right: 5rem;
-fill: white;
+fill: ${props => props.theme.primary};
 transition: width ${props => props.theme.transition1} linear;
 height: auto;
 width: ${props => props.shrink ? "3rem" : "5rem"};
@@ -45,9 +83,9 @@ ${breakpoints.vp7}{
   margin-right: 3rem;
 }
 `
-
 const Header = ({ theme }) => {
   const [shrink, setShrink] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const onScroll = (e) => {
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
@@ -58,8 +96,21 @@ const Header = ({ theme }) => {
       setShrink(false);
   }
 
+  const handleClick = () => {
+    setOpen(!open);
+  }
+  useEffect(() => {
+    let x = document.getElementsByTagName("html")[0];
+    let style = "visible";
+    if (open)
+      style = "hidden";
+    document.body.style.overflow = style;
+    x.style.overflow = style;
+  }, [open])
+
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll)
   });
 
   return (
@@ -67,10 +118,18 @@ const Header = ({ theme }) => {
       <Link to='/'>
       <LogoStyled shrink={shrink}/>
       </Link>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/services">Services</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+      <Menu
+        isOpen={open}
+        menuClicked={handleClick}
+        strokeWidth={3}
+        color='white'
+      />
+      <Nav className={`${open ? "active" : ""}`}>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/services">Services</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+      </Nav>
     </HeaderDiv>
   )
 }

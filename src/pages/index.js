@@ -241,8 +241,6 @@ const IndexPage = () => {
    })
   },[])
 
-  console.log(dimensions);
-
   return (
     <Layout>
       <SEO title="Home" />
