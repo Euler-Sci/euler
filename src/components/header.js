@@ -8,14 +8,17 @@ import Logo from '../assets/svg/euler.svg';
 
 const HeaderDiv = styled.nav`
 background-color: ${props => props.shrink ? props.theme.darkGunmetal: props.theme.morningBlue + "60"};
-padding: ${props => props.shrink ? "0.25rem" : "1.5rem 0"};
+padding: ${props => props.shrink ? "1rem" : "1.5rem 0"};
 display: flex;
 position: fixed;
 width: 100%;
 justify-content: center;
-z-index: 100;
+z-index: 1;
 transition: padding ${props => props.theme.transition1} ease-in;
 transition: background-color ${props => props.theme.transition1} ease-in;
+${breakpoints.vp4} {
+  justify-content: space-evenly;
+}
 `
 const Nav = styled.div`
 margin: 1rem 0;
@@ -35,6 +38,7 @@ ${breakpoints.vp4} {
   left: 0;
   width: 100%;
   height: 100vh;
+  padding-top: 30%;
   background-color: black;
   a {
     margin: 3rem auto;
@@ -47,7 +51,7 @@ margin-top: 0.35rem;
 display: none;
 visibility: hidden;
 cursor: pointer;
-z-index: 1;
+z-index: 3;
 
 ${breakpoints.vp4}{
   display: inline-block;
@@ -81,6 +85,9 @@ width: ${props => props.shrink ? "3rem" : "5rem"};
 ${breakpoints.vp7}{
   width: ${props => props.shrink ? "2rem" : "5rem"};
   margin-right: 3rem;
+}
+${breakpoints.vp4}{
+  width: ${props => props.shrink ? "3rem" : "5rem"};
 }
 `
 const Header = ({ theme }) => {
