@@ -7,6 +7,7 @@ background-color: ${props => props.theme.gunmetal};
 `
 const Cards = styled.div`
 display: flex;
+flex-wrap: wrap;
 justify-content: center;
 padding: 1rem;
 padding-top: 0;
