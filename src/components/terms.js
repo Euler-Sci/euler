@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { numbers, breakpoints } from '../global/breakpoints'
 
 const Box = styled.div`
 width: 50%;
@@ -11,6 +12,12 @@ ul {
 }
 a {
   color: ${props => props.theme.peach};
+}
+${breakpoints.vp7} {
+  width: 80%;
+}
+${breakpoints.vp4} {
+  margin: 7rem auto;
 }
 `
 const Terms = () => {

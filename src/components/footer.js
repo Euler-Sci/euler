@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { breakpoints } from '../global/breakpoints'
 
 const FooterParent = styled.footer`
 
@@ -12,15 +13,31 @@ margin: 0 auto;
 display: flex;
 justify-content: space-around;
 padding: 1rem;
+${breakpoints.vp12}{
+  width: 90%;
+}
+${breakpoints.vp4} {
+  flex-wrap: wrap;
+}
 `
 const Card = styled.div`
-width: 20rem;
-line-height: 1.7rem;
+width: 15rem;
 h4 {
   font-size: 1.5rem;
 }
+p {
+  font-size: 1rem;
+}
 a {
   color: white;
+}
+${breakpoints.vp10} {
+  width: 10rem;
+}
+${breakpoints.vp4} {
+  width: 15rem;
+  text-align: center;
+  margin: 1rem;
 }
 `
 
