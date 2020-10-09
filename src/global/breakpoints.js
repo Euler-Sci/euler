@@ -1,4 +1,5 @@
 const numbers = {
+    vp3:    321,
     vp4:    481,
     vp7:    801,
     vp10:   1025, // x 768

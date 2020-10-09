@@ -42,6 +42,9 @@ ${breakpoints.vp4} {
   background-color: black;
   a {
     margin: 3rem auto;
+    @media only screen and (max-height: 550px) {
+      margin: 2rem auto;
+    }
   }
 }
 `

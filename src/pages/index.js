@@ -9,7 +9,7 @@ import { Arrow, Highlight } from '../global/elements.js';
 /* For services panel */
 import { CardsParent, Cards, Card } from '../global/cards';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicroscope, faMagic, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import { faCodeBranch, faCogs, faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 /* for about panel */
 import EquationPNG from '../images/equation.png';
@@ -35,13 +35,18 @@ ${breakpoints.vp10} {
   background-size: 140%;
   height: 768px;
 }
-${breakpoints.vp10} {
+${breakpoints.vp7} {
   background-size: 160%;
   height: 690px;
 }
-${breakpoints.vp10} {
+${breakpoints.vp4} {
   background-size: 250%;
   background-position: right -200px bottom 0;
+}
+${breakpoints.vp3} {
+  background-size: 300%;
+  background-position: right -200px bottom 0;
+  height: 500px;
 }
 `
 const HeroText = styled.div`
@@ -77,7 +82,7 @@ ${breakpoints.vp7} {
   }
 }
 ${breakpoints.vp4} {
-  left: 50%;
+  left: 42%;
   top: 60%;
   h1, h2, h3 {
     width: 15rem;
@@ -86,6 +91,15 @@ ${breakpoints.vp4} {
   p {
     font-size: 1.5rem;
     width: 20rem;
+  }
+}
+${breakpoints.vp3} {
+  h1, h2, h3 {
+    font-size: 1.5rem;
+  }
+  p {
+    width: 15rem;
+    font-size: 1rem;
   }
 }
 `
@@ -104,6 +118,9 @@ color: ${props => props.theme.primary};
 transition: background-color ${props => props.theme.transition1};
 &:hover {
     background-color: ${props => props.theme.lilac};
+}
+${breakpoints.vp3} {
+  font-size: 1rem;
 }
 `
 const HeroPanel = () => {
@@ -175,35 +192,36 @@ const CardsPanel = ({ active }) => {
       <CardsArrow className={active ? 'open' : ''}/>
       <Cards>
         <Card>
-          <Icon icon={faMicroscope} size={iconSize} />
-          <h1>Scientific Computing</h1>
+          <Icon icon={faCodeBranch} size={iconSize} />
+          <h1>Software</h1>
           <ul>
-            <li>Image Processing</li>
-            <li>Signal Processing</li>
+            <li>Signal & Image Processing</li>
+            <li>Machine Learning</li>
             <li>Speed Optimization</li>
             <li>Instrument Control</li>
-            <li>Desktop Applications</li>
+            <li>Desktop & Web Applications</li>
           </ul>
         </Card>
         <Card>
-          <Icon icon={faMagic} size={iconSize} />
-          <h1>Automation</h1>
+          <Icon icon={faCogs} size={iconSize} />
+          <h1>Mechanical Engineering</h1>
           <ul>
-            <li>CAD/FEA Design</li>
-            <li>Actuator & Sensor Selection</li>
+            <li>Computer Aided Design (CAD)</li>
+            <li>Finite Element Analysis (FEA)</li>
+            <li>Computational Fluid Dynamics (CFD)</li>
             <li>Control System Implementation</li>
-            <li>PCBA & Microcontroller Prototyping</li>
-            <li>Firmware/Software</li>
+            <li>Geometric Dimensioning & Tolerancing (GD&T)</li>
           </ul>
         </Card>
         <Card>
-          <Icon icon={faClipboardList} size={iconSize} />
-          <h1>Consultation</h1>
-          <p>
-            Available for technical review of an idea, support for drafting a
-            proposal or grant, or small projects that require a focused amount
-            of development work.
-          </p>
+          <Icon icon={faMicrochip} size={iconSize} />
+          <h1>Electrical Engineering</h1>
+          <ul>
+            <li>PCBA Schematic, Layout, Analysis & Prototyping</li>
+            <li>Microcontroller Selection</li>
+            <li>Instrumentation Setup</li>
+            <li>Communication Subsystems (e.g., USB, SATA, TCP/IP)</li>
+          </ul>
         </Card>
       </Cards>
     </CardsParent>

@@ -15,6 +15,7 @@ padding-bottom: 5rem;
 ${breakpoints.vp4} {
   flex-direction: column;
   padding: 0;
+  margin: 0 auto;
 }
 `
 const Card = styled.div`
@@ -39,20 +40,18 @@ ul, p {
 }
 ${breakpoints.vp7} {
   width: 20rem;
-  padding: 5rem 0.5rem 0 1rem;
-  margin: 0.25rem;
+  padding: 2rem 0.5rem 0 1rem;
   h1 {
     font-size: 2rem;
   }
   ul, p {
-    font-size: 1rem;
-    line-height: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
   }
 }
 ${breakpoints.vp4} {
   width: 20rem;
-  padding: 5rem 0.5rem 0 1rem;
-  margin: 0.25rem;
+  margin: 0;
   h1 {
     font-size: 2rem;
   }
@@ -61,6 +60,10 @@ ${breakpoints.vp4} {
     font-size: 1.5rem;
     line-height: 1.5rem;
   }
+}
+${breakpoints.vp3} {
+  margin: 0 auto;
+  width: 17rem;
 }
 `
 export { CardsParent, Cards, Card }
