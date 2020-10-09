@@ -1,5 +1,5 @@
-import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import HamburgerMenu from 'react-hamburger-menu';
 

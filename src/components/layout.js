@@ -12,17 +12,14 @@ import { theme } from "../global/theme"
 
 import "./layout.css"
 import Header from "./header"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Header/>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </ThemeProvider>
   )
 }
