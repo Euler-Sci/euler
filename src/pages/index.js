@@ -160,7 +160,7 @@ ${breakpoints.vp4} {
 const Card = styled.div`
 width: 25rem;
 margin: 2rem;
-padding: 4rem 1rem;
+padding: 6rem 1rem;
 background-color: ${props => props.theme.gunmetal};
 
 text-align: center;
@@ -212,15 +212,31 @@ border-top: 8rem solid ${props => props.theme.gunmetal};
   border-top: 8rem solid ${props => props.theme.gunmetal};
 }
 `
+const Skills = styled.ul`
+margin: 0 auto 5rem auto;
+font-size: 2rem;
+width: fit-content;
+columns: 2;
+li {
+  line-height: 3rem;
+  margin: 0 5rem;
+}
+`
 const Icon = styled(FontAwesomeIcon)`
 margin: 2rem;
 color: ${props => props.theme.highlight};
+`
+const ServiceHeader = styled.h1`
+width: 50%;
+margin: 3rem auto;
+
 `
 const CardsPanel = ({ active, id }) => {
   const iconSize = "5x";
   return (
     <CardsParent id={id}>
       <CardsArrow className={active ? 'open' : ''}/>
+      <ServiceHeader>Euler provides contracting and consulting services for the development of scientific software. Our expertise includes the following.</ServiceHeader>
       <Cards>
         <Card>
           <Icon icon={faCodeBranch} size={iconSize} />
@@ -268,6 +284,21 @@ const CardsPanel = ({ active, id }) => {
           </ul>
         </Card>
       </Cards>
+      <ServiceHeader>We have significant experience in the following tools and platforms:</ServiceHeader>
+      <Skills>
+        <li>C/C++</li>
+        <li>MATLAB</li>
+        <li>Python</li>
+        <li>C#</li>
+        <li>AVX</li>
+        <li>TensorFlow</li>
+        <li>ROOT</li>
+        <li>LarCV</li>
+        <li>CUDA</li>
+        <li>OpenCL</li>
+        <li>Windows</li>
+        <li>Linux</li>
+      </Skills>
     </CardsParent>
   )
 }
@@ -465,6 +496,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll)
   });
 
   useEffect(() => {

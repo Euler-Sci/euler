@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AnchorLink } from 'gatsby-plugin-anchor-links';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import HamburgerMenu from 'react-hamburger-menu';
 
@@ -61,7 +61,7 @@ ${breakpoints.vp4}{
   visibility: visible;
 }
 `
-const NavLink = styled(AnchorLink)`
+const NavLink = styled(Link)`
 text-decoration: none;
 color: ${props => props.theme.secondary};
 font-family: Mulish;
@@ -109,6 +109,7 @@ const Header = ({ theme }) => {
   const handleClick = () => {
     setOpen(!open);
   }
+
   useEffect(() => {
     // Turn off scroll when menu open
     let x = document.getElementsByTagName("html")[0];
@@ -126,9 +127,9 @@ const Header = ({ theme }) => {
 
   return (
     <HeaderDiv shrink={shrink}>
-      <AnchorLink to='/'>
-      <LogoStyled shrink={shrink}/>
-      </AnchorLink>
+      <Link to='/'>
+        <LogoStyled shrink={shrink}/>
+      </Link>
       <Menu
         isOpen={open}
         menuClicked={handleClick}

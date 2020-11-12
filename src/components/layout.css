@@ -5,6 +5,7 @@ html, body {
     font-family: Mulish;
     background-color: black;
     color: white;
+    scroll-behavior: smooth;
 }
 
 h1 {
