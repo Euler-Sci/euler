@@ -137,8 +137,8 @@ const Header = ({ theme }) => {
       />
       <Nav className={`${open ? "active" : ""}`}>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/services">Services</NavLink>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="#services">Services</NavLink>
+        <NavLink to="#about">About</NavLink>
         <NavLink to="/contact">Contact</NavLink>
       </Nav>
     </HeaderDiv>

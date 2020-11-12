@@ -7,13 +7,11 @@ import SEO from '../components/seo';
 import { Arrow, Highlight } from '../global/elements.js';
 
 /* For services panel */
-import { CardsParent, Cards, Card } from '../global/cards';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCodeBranch, faCogs, faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 /* for about panel */
 import EquationPNG from '../images/equation.png';
-import { Equation, EquationImg } from '../global/equation';
 
 import { numbers, breakpoints } from '../global/breakpoints'
 
@@ -139,46 +137,79 @@ const HeroPanel = () => {
     </Hero>
   )
 }
-
-/******************
-* Equation Panel *
-******************/
-const EquationArrow = styled(Arrow)`
-border-top: 0rem solid ${props => props.theme.gunmetal};
-&.open {
-  border-top: 8rem solid ${props => props.theme.gunmetal};
-}
-`
-const EquationPanel = () => {
-  return (
-    <Equation>
-      <EquationImg src={EquationPNG} />
-      <p>
-        This equation, <Highlight>Euler's identity</Highlight>, exhibits
-        the elegance and simplicity of the technical solutions that we
-        strive for.
-      </p>
-      <br />
-      <br />
-      <p>
-        Of course, real systems with practicality are always products of
-        trade-offs, but <Highlight>balance</Highlight>,{' '}
-        <Highlight>maintainability</Highlight>,{' '}
-        <Highlight>robustness</Highlight>, and{' '}
-        <Highlight>cost</Highlight> are our lodestars.
-      </p>
-    </Equation>
-  )
-}
-
 /***************
 * Cards Panel *
 ***************/
 
+const CardsParent = styled.div`
+background-color: ${props => props.theme.black};
+`
+const Cards = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+padding: 1rem;
+padding-top: 0;
+padding-bottom: 5rem;
+${breakpoints.vp4} {
+  flex-direction: column;
+  padding: 0;
+  margin: 0 auto;
+}
+`
+const Card = styled.div`
+width: 25rem;
+margin: 2rem;
+padding: 4rem 1rem;
+background-color: ${props => props.theme.gunmetal};
+
+text-align: center;
+h1 {
+  margin-bottom: 3rem;
+  color: ${props => props.theme.secondary};
+}
+p {
+  line-height: 2rem;
+}
+ul, p {
+  text-align: left;
+  font-size: 1.5rem;
+  li {
+    margin: 2rem;
+  }
+}
+${breakpoints.vp7} {
+  width: 20rem;
+  padding: 2rem 0.5rem 0 1rem;
+  h1 {
+    font-size: 2rem;
+  }
+  ul, p {
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+  }
+}
+${breakpoints.vp4} {
+  width: 20rem;
+  margin: 0;
+  h1 {
+    font-size: 2rem;
+  }
+  ul, p {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
+${breakpoints.vp3} {
+  margin: 0 auto;
+  width: 17rem;
+}
+`
 const CardsArrow = styled(Arrow)`
-border-top: 0rem solid ${props => props.theme.black};
+border-top: 8rem solid ${props => props.theme.gunmetal};
 &.open {
-  border-top: 8rem solid ${props => props.theme.black};
+  border-top: 8rem solid ${props => props.theme.gunmetal};
 }
 `
 const Icon = styled(FontAwesomeIcon)`
@@ -193,40 +224,143 @@ const CardsPanel = ({ active }) => {
       <Cards>
         <Card>
           <Icon icon={faCodeBranch} size={iconSize} />
-          <h1>Software</h1>
+          <h1>Modeling and Simulation</h1>
           <ul>
-            <li>Signal & Image Processing</li>
-            <li>Machine Learning</li>
-            <li>Speed Optimization</li>
-            <li>Instrument Control</li>
-            <li>Desktop & Web Applications</li>
+            <li>Physics-based modeling</li>
+            <li>Machine/Deep Learning</li>
+            <li>Quantum Simulation</li>
           </ul>
         </Card>
         <Card>
           <Icon icon={faCogs} size={iconSize} />
-          <h1>Mechanical Engineering</h1>
+          <h1>High Performance Computing</h1>
           <ul>
-            <li>Computer Aided Design (CAD)</li>
-            <li>Finite Element Analysis (FEA)</li>
-            <li>Computational Fluid Dynamics (CFD)</li>
-            <li>Control System Implementation</li>
-            <li>Geometric Dimensioning & Tolerancing (GD&T)</li>
+            <li>Speed Optimization</li>
+            <li>Parallel Processing</li>
+            <li>Supercomputing</li>
           </ul>
         </Card>
         <Card>
           <Icon icon={faMicrochip} size={iconSize} />
-          <h1>Electrical Engineering</h1>
+          <h1>Signal Processing</h1>
           <ul>
-            <li>PCBA Schematic, Layout, Analysis & Prototyping</li>
-            <li>Microcontroller Selection</li>
-            <li>Instrumentation Setup</li>
-            <li>Communication Subsystems (e.g., USB, SATA, TCP/IP)</li>
+            <li>Image Processing</li>
+            <li>Radar & Optical Processing</li>
+            <li>Speach & Acoustic Processing</li>
+          </ul>
+        </Card>
+        <Card>
+          <Icon icon={faMicrochip} size={iconSize} />
+          <h1>Software Development</h1>
+          <ul>
+            <li>Desktop Applications</li>
+            <li>Web Applications</li>
+            <li>Instrument Control</li>
+          </ul>
+        </Card>
+        <Card>
+          <Icon icon={faMicrochip} size={iconSize} />
+          <h1>Data Science</h1>
+          <ul>
+            <li>Statistical Analysis</li>
+            <li>Data Visualization</li>
+            <li>Data Gathering/Web Scraping</li>
           </ul>
         </Card>
       </Cards>
     </CardsParent>
   )
 }
+
+/******************
+* Equation Panel *
+******************/
+const EquationArrow = styled(Arrow)`
+border-top: 8rem solid ${props => props.theme.black};
+&.open {
+  border-top: 8rem solid ${props => props.theme.black};
+}
+`
+
+export const Equation = styled.div`
+background-color: ${props => props.theme.gunmetal};
+padding-bottom: 7rem;
+p:first-of-type {
+  margin-top: 5rem;
+}
+p {
+  width: 800px;
+  margin: 3rem auto 0.5rem auto;
+  font-size: 2rem;
+}
+${breakpoints.vp10} {
+  margin-bottom: 10rem;
+}
+${breakpoints.vp7} {
+  p {
+    width: 600px;
+  }
+  margin-bottom: 5rem;
+}
+${breakpoints.vp4} {
+  p {
+    font-size: 1.5rem;
+    width: 85%;
+    line-height: 1.7rem;
+  }
+}
+`
+export const EquationImg = styled.img`
+display: block;
+margin: 10rem auto;
+width: 500px;
+${breakpoints.vp10} {
+  margin: 5rem auto;
+}
+${breakpoints.vp4} {
+  width: 250px;
+}
+`
+const EquationPanel = ({active}) => {
+  return (
+    <Equation>
+      <EquationArrow className={active ? 'open' : ''}/>
+      <p>
+        <Highlight>Euler Scientific</Highlight> is a partnership of software,
+        electrical, optics, and
+        mechanical engineers, and numerous other senior engineering
+        professionals.  We possess expertise in a number of disciplines,
+        including mechanical and electrical design, high performance computing,
+        power electronics, statistics, and both firmware and software.  We aim
+        to offer the highest possible quality of engineering services,
+        characterized by innovation, practicality, open and clear communication,
+        and integrity.
+      </p>
+      <p>
+        Our namesake, <Highlight>Leonhard Euler</Highlight>, whose picture
+        graces our landing page, was
+        one of the most prolific mathematicians of all time. His{' '}
+        <Highlight>insight</Highlight>{' '}
+        and <Highlight>creativity</Highlight> inspires us daily.
+      </p>
+      <EquationImg src={EquationPNG} />
+      <p>
+        This equation, <Highlight>Euler's identity</Highlight>, exhibits
+        the elegance and simplicity of the technical solutions that we
+        strive for.
+      </p>
+      <p>
+        Of course, real systems with practicality are always products of
+        trade-offs, but <Highlight>balance</Highlight>,{' '}
+        <Highlight>maintainability</Highlight>,{' '}
+        <Highlight>robustness</Highlight>, and{' '}
+        <Highlight>cost</Highlight> are our lodestars.
+      </p>
+    </Equation>
+  )
+}
+
+
 
 /****************************************************************************/
 
@@ -244,13 +378,13 @@ const IndexPage = () => {
      * height when screen is skinnier */
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
 
-    let equationActiveOn = 600;
+    let equationActiveOn = 2200;
     if (dimensions[0] <= numbers.vp10)
       equationActiveOn = 300;
 
-    let cardsActiveOn = 1600;
+    let cardsActiveOn = 400;
     if (dimensions[0] <= numbers.vp10)
-      cardsActiveOn = 1100;
+      cardsActiveOn = 300;
     else if (dimensions[0] <= numbers.vp7)
       cardsActiveOn = 400;
 
@@ -281,10 +415,9 @@ const IndexPage = () => {
 
       <HeroPanel />
 
-      <EquationArrow className={equationArrowActive ? 'open' : ''} />
-      <EquationPanel />
+      <CardsPanel id="services" active={cardsArrowActive} />
 
-      <CardsPanel active={cardsArrowActive} />
+      <EquationPanel active={equationArrowActive} />
 
     </Layout>
   )
