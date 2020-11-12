@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import { breakpoints } from '../global/breakpoints'
 
 const FooterParent = styled.footer`
-
+background-color: ${props => props.theme.darkGunmetal};
 `
 
 const StyledFooter = styled.div`

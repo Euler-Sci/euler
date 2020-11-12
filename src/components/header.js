@@ -139,7 +139,7 @@ const Header = ({ theme }) => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="#services">Services</NavLink>
         <NavLink to="#about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="#contact">Contact</NavLink>
       </Nav>
     </HeaderDiv>
   )

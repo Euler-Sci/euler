@@ -360,7 +360,63 @@ const EquationPanel = ({active}) => {
   )
 }
 
+/**********************
+ * Contact form stuff *
+ **********************/
+const ContactArrow = styled(Arrow)`
+border-top: 8rem solid ${props => props.theme.gunmetal};
+&.open {
+  border-top: 8rem solid ${props => props.theme.gunmetal};
+}
+`
 
+const Form = styled.form`
+margin: 5rem auto;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+width: 60rem;
+`
+const Input = styled.input`
+border-radius: 0;
+border: 0;
+margin: 1rem;
+height: 2rem;
+font-family: Roboto;
+`
+
+const Contact = ({active}) => {
+  return (
+    <>
+      <ContactArrow className={active ? 'open' : ''}/>
+      <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
+        <label>
+          Name
+          <Input type="text" name="name" id="name" />
+        </label>
+        <label>
+          Email
+          <Input type="email" name="email" id="email" />
+        </label>
+        <label>
+          Subject
+          <Input type="text" name="subject" id="subject" />
+        </label>
+        <textarea
+          name="message"
+          id="message"
+          rows="20"
+          cols="70"
+          placeholder="Type your message here..."
+          style={{ fontFamily: "Mulish", fontSize: "1.3rem" }}
+        />
+        <button type="submit">Send</button>
+      </Form>
+    </>
+  )
+}
 
 /****************************************************************************/
 
@@ -371,6 +427,7 @@ const EquationPanel = ({active}) => {
 const IndexPage = () => {
   const [equationArrowActive, setEquationArrowActive] = useState(false);
   const [cardsArrowActive, setCardsArrowActive] = useState(false);
+  const [contactArrowActive, setContactArrowActive] = useState(false);
   const [dimensions, setDimensions] = useState([1920, 1080])
 
   const onScroll = (e) => {
@@ -378,24 +435,32 @@ const IndexPage = () => {
      * height when screen is skinnier */
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
 
-    let equationActiveOn = 2200;
-    if (dimensions[0] <= numbers.vp10)
-      equationActiveOn = 300;
-
     let cardsActiveOn = 400;
     if (dimensions[0] <= numbers.vp10)
       cardsActiveOn = 300;
     else if (dimensions[0] <= numbers.vp7)
       cardsActiveOn = 400;
 
-    if (distanceY >= equationActiveOn)
-      setEquationArrowActive(true);
-    else
-      setEquationArrowActive(false);
+    let equationActiveOn = 2200;
+    if (dimensions[0] <= numbers.vp10)
+      equationActiveOn = 300;
+
+    let contactArrowActiveOn = 3500;
+
     if (distanceY >= cardsActiveOn)
       setCardsArrowActive(true);
     else
       setCardsArrowActive(false);
+
+    if (distanceY >= equationActiveOn)
+      setEquationArrowActive(true);
+    else
+      setEquationArrowActive(false);
+
+    if (distanceY >= contactArrowActiveOn)
+      setContactArrowActive(true);
+    else
+      setContactArrowActive(false);
   }
 
   useEffect(() => {
@@ -417,7 +482,9 @@ const IndexPage = () => {
 
       <CardsPanel id="services" active={cardsArrowActive} />
 
-      <EquationPanel active={equationArrowActive} />
+      <EquationPanel id="about" active={equationArrowActive} />
+
+      <Contact id="contact" active={contactArrowActive}/>
 
     </Layout>
   )
