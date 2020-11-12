@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'gatsby';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 import styled from 'styled-components';
 import HamburgerMenu from 'react-hamburger-menu';
 
@@ -61,7 +61,7 @@ ${breakpoints.vp4}{
   visibility: visible;
 }
 `
-const NavLink = styled(Link)`
+const NavLink = styled(AnchorLink)`
 text-decoration: none;
 color: ${props => props.theme.secondary};
 font-family: Mulish;
@@ -126,9 +126,9 @@ const Header = ({ theme }) => {
 
   return (
     <HeaderDiv shrink={shrink}>
-      <Link to='/'>
+      <AnchorLink to='/'>
       <LogoStyled shrink={shrink}/>
-      </Link>
+      </AnchorLink>
       <Menu
         isOpen={open}
         menuClicked={handleClick}

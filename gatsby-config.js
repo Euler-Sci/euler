@@ -7,6 +7,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-anchor-links`,
+      options: {
+        offset: -100,
+        duration: 1000000,
+      }
+    },
     `gatsby-plugin-fontawesome-css`,
     {
       resolve: "gatsby-plugin-react-svg",

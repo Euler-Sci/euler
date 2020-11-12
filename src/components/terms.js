@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { numbers, breakpoints } from '../global/breakpoints'
+import { breakpoints } from '../global/breakpoints'
 
 const Box = styled.div`
 width: 50%;

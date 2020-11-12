@@ -216,10 +216,10 @@ const Icon = styled(FontAwesomeIcon)`
 margin: 2rem;
 color: ${props => props.theme.highlight};
 `
-const CardsPanel = ({ active }) => {
+const CardsPanel = ({ active, id }) => {
   const iconSize = "5x";
   return (
-    <CardsParent>
+    <CardsParent id={id}>
       <CardsArrow className={active ? 'open' : ''}/>
       <Cards>
         <Card>
@@ -321,9 +321,9 @@ ${breakpoints.vp4} {
   width: 250px;
 }
 `
-const EquationPanel = ({active}) => {
+const EquationPanel = ({active, id}) => {
   return (
-    <Equation>
+    <Equation id={id}>
       <EquationArrow className={active ? 'open' : ''}/>
       <p>
         <Highlight>Euler Scientific</Highlight> is a partnership of software,
@@ -385,9 +385,9 @@ height: 2rem;
 font-family: Roboto;
 `
 
-const Contact = ({active}) => {
+const Contact = ({active, id}) => {
   return (
-    <>
+    <div id={id}>
       <ContactArrow className={active ? 'open' : ''}/>
       <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
         <input type="hidden" name="bot-field" />
@@ -414,7 +414,7 @@ const Contact = ({active}) => {
         />
         <button type="submit">Send</button>
       </Form>
-    </>
+    </div>
   )
 }
 
