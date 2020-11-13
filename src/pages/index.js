@@ -144,6 +144,20 @@ const HeroPanel = () => {
 const CardsParent = styled.div`
 background-color: ${props => props.theme.black};
 `
+const CardsArrow = styled(Arrow)`
+border-top: 8rem solid ${props => props.theme.gunmetal};
+&.open {
+  border-top: 8rem solid ${props => props.theme.gunmetal};
+}
+`
+const ServiceHeader = styled.h1`
+width: 50%;
+margin: 3rem auto;
+${breakpoints.vp7} {
+  width: 80%;
+  font-size: 2rem;
+}
+`
 const Cards = styled.div`
 display: flex;
 flex-wrap: wrap;
@@ -151,6 +165,9 @@ justify-content: center;
 padding: 1rem;
 padding-top: 0;
 padding-bottom: 5rem;
+${breakpoints.vp7} {
+  padding-bottom: 2rem;
+}
 ${breakpoints.vp4} {
   flex-direction: column;
   padding: 0;
@@ -178,16 +195,18 @@ ul, p {
     margin: 2rem;
   }
 }
+
 ${breakpoints.vp10} {
   padding: 4rem 0.75rem;
 }
 ${breakpoints.vp7} {
-  width: 20rem;
+  width: 30rem;
   padding: 2rem 0.5rem 0 1rem;
   h1 {
     font-size: 2rem;
   }
   ul, p {
+    text-align: center;
     font-size: 1.2rem;
     line-height: 1.3rem;
   }
@@ -209,12 +228,6 @@ ${breakpoints.vp3} {
   width: 17rem;
 }
 `
-const CardsArrow = styled(Arrow)`
-border-top: 8rem solid ${props => props.theme.gunmetal};
-&.open {
-  border-top: 8rem solid ${props => props.theme.gunmetal};
-}
-`
 const Skills = styled.ul`
 margin: 0 auto 5rem auto;
 font-size: 2rem;
@@ -229,17 +242,15 @@ const Icon = styled(FontAwesomeIcon)`
 margin: 2rem;
 color: ${props => props.theme.highlight};
 `
-const ServiceHeader = styled.h1`
-width: 50%;
-margin: 3rem auto;
-
-`
 const CardsPanel = ({ active, id }) => {
   const iconSize = "5x";
   return (
     <CardsParent id={id}>
       <CardsArrow className={active ? 'open' : ''}/>
-      <ServiceHeader>Euler provides contracting and consulting services for the development of scientific software. Our expertise includes the following.</ServiceHeader>
+      <ServiceHeader>
+        Euler provides contracting and consulting services for the development
+        of scientific software. Our expertise includes the following:
+      </ServiceHeader>
       <Cards>
         <Card>
           <Icon icon={faCodeBranch} size={iconSize} />
@@ -331,7 +342,6 @@ ${breakpoints.vp7} {
   p {
     width: 600px;
   }
-  margin-bottom: 5rem;
 }
 ${breakpoints.vp4} {
   p {
@@ -407,6 +417,9 @@ display: flex;
 justify-content: center;
 flex-wrap: wrap;
 width: 60rem;
+${breakpoints.vp7} {
+  width: 100%;
+}
 `
 const Top = styled.div`
 display: flex;
@@ -466,7 +479,13 @@ ${breakpoints.vp3} {
 }
 `
 
-const Contact = ({active, id}) => {
+const Contact = ({ active, id, dimensions }) => {
+  let cols = 70;
+  if (dimensions[0] <= numbers.vp7)
+    cols = 50;
+  let rows = 20
+  if (dimensions[1] <= 600)
+    rows = 15;
   return (
     <div id={id}>
       <ContactArrow className={active ? 'open' : ''}/>
@@ -490,8 +509,8 @@ const Contact = ({active, id}) => {
         <TextArea
           name="message"
           id="message"
-          rows="20"
-          cols="70"
+          rows={rows}
+          cols={cols}
           placeholder="Type your message here..."
         />
         <Button type="submit">Send</Button>
@@ -523,20 +542,22 @@ const IndexPage = () => {
     let cardsActiveOn = 700;
     if (dimensions[0] <= numbers.vp10)
       cardsActiveOn = 400;
-    if (dimensions[0] <= numbers.vp7)
-      cardsActiveOn = 400;
 
     let equationActiveOn = 2950;
     if (dimensions[0] <= numbers.vp12)
       equationActiveOn = 3850;
     if (dimensions[0] <= numbers.vp10)
       equationActiveOn = 3450;
+    if (dimensions[0] <= numbers.vp10)
+      equationActiveOn = 3700;
 
     let contactActiveOn = 4600;
     if (dimensions[0] <= numbers.vp12)
       contactActiveOn = 5300;
     if (dimensions[0] <= numbers.vp10)
       contactActiveOn = 4700;
+    if (dimensions[0] <= numbers.vp7)
+      contactActiveOn = 5200;
 
     /* don't change these */
     if (distanceY >= cardsActiveOn)
@@ -577,7 +598,7 @@ const IndexPage = () => {
 
       <EquationPanel id="about" active={equationArrowActive} />
 
-      <Contact id="contact" active={contactArrowActive}/>
+      <Contact id="contact" dimensions={dimensions} active={contactArrowActive}/>
 
     </Layout>
   )
