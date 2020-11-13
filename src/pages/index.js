@@ -550,6 +550,8 @@ const IndexPage = () => {
       equationActiveOn = 3450;
     if (dimensions[0] <= numbers.vp10)
       equationActiveOn = 3700;
+    if (dimensions[0] <= numbers.vp7 && dimensions[1] >= 1024)
+      equationActiveOn = 3400;
 
     let contactActiveOn = 4600;
     if (dimensions[0] <= numbers.vp12)
@@ -558,6 +560,8 @@ const IndexPage = () => {
       contactActiveOn = 4700;
     if (dimensions[0] <= numbers.vp7)
       contactActiveOn = 5200;
+    if (dimensions[0] <= numbers.vp7 && dimensions[1] >= 1024)
+      contactActiveOn = 4950;
 
     /* don't change these */
     if (distanceY >= cardsActiveOn)
