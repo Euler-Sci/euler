@@ -466,18 +466,23 @@ const IndexPage = () => {
      * height when screen is skinnier */
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
 
-    let cardsActiveOn = 400;
+    console.log(distanceY);
+
+    /* mobile optimize these */
+    let cardsActiveOn = 700;
     if (dimensions[0] <= numbers.vp10)
       cardsActiveOn = 300;
     else if (dimensions[0] <= numbers.vp7)
       cardsActiveOn = 400;
 
-    let equationActiveOn = 2200;
+    let equationActiveOn = 2950;
     if (dimensions[0] <= numbers.vp10)
       equationActiveOn = 300;
 
-    let contactArrowActiveOn = 3500;
+    let contactArrowActiveOn = 4600;
 
+
+    /* don't change these */
     if (distanceY >= cardsActiveOn)
       setCardsArrowActive(true);
     else
