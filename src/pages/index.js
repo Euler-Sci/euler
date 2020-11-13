@@ -91,6 +91,12 @@ ${breakpoints.vp4} {
     width: 20rem;
   }
 }
+${breakpoints.vp3_2} {
+  p {
+    width: 15rem;
+    font-size: 1rem;
+  }
+}
 ${breakpoints.vp3} {
   h1, h2, h3 {
     font-size: 1.5rem;
@@ -116,6 +122,9 @@ color: ${props => props.theme.primary};
 transition: background-color ${props => props.theme.transition1};
 &:hover {
     background-color: ${props => props.theme.lilac};
+}
+${breakpoints.vp3_2} {
+  font-size: 1.2rem;
 }
 ${breakpoints.vp3} {
   font-size: 1rem;
@@ -169,7 +178,6 @@ ${breakpoints.vp7} {
   padding-bottom: 2rem;
 }
 ${breakpoints.vp4} {
-  flex-direction: column;
   padding: 0;
   margin: 0 auto;
 }
@@ -213,7 +221,7 @@ ${breakpoints.vp7} {
 }
 ${breakpoints.vp4} {
   width: 20rem;
-  margin: 0;
+  margin: 1rem 0;
   h1 {
     font-size: 2rem;
   }
@@ -224,7 +232,6 @@ ${breakpoints.vp4} {
   }
 }
 ${breakpoints.vp3} {
-  margin: 0 auto;
   width: 17rem;
 }
 `
@@ -236,6 +243,14 @@ columns: 2;
 li {
   line-height: 3rem;
   margin: 0 5rem;
+}
+${breakpoints.vp4} {
+  columns: 1;
+  text-align: center;
+  li {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+  }
 }
 `
 const Icon = styled(FontAwesomeIcon)`
@@ -457,6 +472,20 @@ font-size: 1.3rem;
 box-sizing: border-box;
 padding: 12px 20px;
 border-radius: 4px;
+width: 70rem;
+height: 40rem;
+${breakpoints.vp10} {
+  width: 60rem;
+  height: 30rem;
+}
+${breakpoints.vp7} {
+  width: 45rem;
+  height: 25rem;
+}
+${breakpoints.vp4} {
+  width: 90%;
+  height: 20rem;
+}
 `
 const Button = styled.button`
 margin: 1rem;
@@ -480,12 +509,6 @@ ${breakpoints.vp3} {
 `
 
 const Contact = ({ active, id, dimensions }) => {
-  let cols = 70;
-  if (dimensions[0] <= numbers.vp7)
-    cols = 50;
-  let rows = 20
-  if (dimensions[1] <= 600)
-    rows = 15;
   return (
     <div id={id}>
       <ContactArrow className={active ? 'open' : ''}/>
@@ -509,8 +532,6 @@ const Contact = ({ active, id, dimensions }) => {
         <TextArea
           name="message"
           id="message"
-          rows={rows}
-          cols={cols}
           placeholder="Type your message here..."
         />
         <Button type="submit">Send</Button>
@@ -542,6 +563,8 @@ const IndexPage = () => {
     let cardsActiveOn = 700;
     if (dimensions[0] <= numbers.vp10)
       cardsActiveOn = 400;
+    if (dimensions[0] <= numbers.vp3)
+      cardsActiveOn = 300;
 
     let equationActiveOn = 2950;
     if (dimensions[0] <= numbers.vp12)
@@ -552,6 +575,8 @@ const IndexPage = () => {
       equationActiveOn = 3700;
     if (dimensions[0] <= numbers.vp7 && dimensions[1] >= 1024)
       equationActiveOn = 3400;
+    if (dimensions[0] <= numbers.vp3)
+      equationActiveOn = 4250;
 
     let contactActiveOn = 4600;
     if (dimensions[0] <= numbers.vp12)
@@ -562,6 +587,10 @@ const IndexPage = () => {
       contactActiveOn = 5200;
     if (dimensions[0] <= numbers.vp7 && dimensions[1] >= 1024)
       contactActiveOn = 4950;
+    if (dimensions[0] <= numbers.vp3_2)
+      contactActiveOn = 5850;
+    if (dimensions[0] <= numbers.vp3)
+      contactActiveOn = 6100;
 
     /* don't change these */
     if (distanceY >= cardsActiveOn)
