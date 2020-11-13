@@ -408,12 +408,62 @@ justify-content: center;
 flex-wrap: wrap;
 width: 60rem;
 `
+const Top = styled.div`
+display: flex;
+width: fit-content;
+justify-content: center;
+flex-wrap: wrap;
+margin: 0 auto;
+`
 const Input = styled.input`
-border-radius: 0;
-border: 0;
-margin: 1rem;
-height: 2rem;
 font-family: Roboto;
+font-size: 1.3rem;
+
+background-color: ${props => props.theme.darkGunmetal};
+color: ${props => props.theme.peach};
+
+border: 2px solid ${props => props.theme.gunmetal};
+border-radius: 4px;
+box-sizing: border-box;
+
+height: 2rem;
+width: 14rem;
+margin: 1rem;
+padding: 1rem 1rem;
+
+&:focus {
+  border: 2px solid ${props => props.theme.lilac};
+}
+`
+const TextArea = styled.textarea`
+background-color: ${props => props.theme.darkGunmetal};
+border: 2px solid ${props => props.theme.gunmetal};
+color: ${props => props.theme.peach};
+font-family: Mulish;
+font-size: 1.3rem;
+box-sizing: border-box;
+padding: 12px 20px;
+border-radius: 4px;
+`
+const Button = styled.button`
+margin: 1rem;
+padding: 15px 32px;
+display: inline-block;
+cursor: pointer;
+
+font-size: 1.4rem;
+font-family: Roboto;
+text-decoration: none;
+
+background-color: ${props => props.theme.gunmetal};
+color: ${props => props.theme.primary};
+transition: background-color ${props => props.theme.transition1};
+&:hover {
+    background-color: ${props => props.theme.lilac};
+}
+${breakpoints.vp3} {
+  font-size: 1rem;
+}
 `
 
 const Contact = ({active, id}) => {
@@ -421,29 +471,30 @@ const Contact = ({active, id}) => {
     <div id={id}>
       <ContactArrow className={active ? 'open' : ''}/>
       <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
-        <input type="hidden" name="bot-field" />
-        <input type="hidden" name="form-name" value="contact" />
-        <label>
-          Name
-          <Input type="text" name="name" id="name" />
-        </label>
-        <label>
-          Email
-          <Input type="email" name="email" id="email" />
-        </label>
-        <label>
-          Subject
-          <Input type="text" name="subject" id="subject" />
-        </label>
-        <textarea
+        <Top>
+          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="form-name" value="contact" />
+          <label>
+            Name
+            <Input type="text" name="name" id="name" />
+          </label>
+          <label>
+            Email
+            <Input type="email" name="email" id="email" />
+          </label>
+          <label>
+            Subject
+            <Input type="text" name="subject" id="subject" />
+          </label>
+        </Top>
+        <TextArea
           name="message"
           id="message"
           rows="20"
           cols="70"
           placeholder="Type your message here..."
-          style={{ fontFamily: "Mulish", fontSize: "1.3rem" }}
         />
-        <button type="submit">Send</button>
+        <Button type="submit">Send</Button>
       </Form>
     </div>
   )
@@ -476,10 +527,14 @@ const IndexPage = () => {
       cardsActiveOn = 400;
 
     let equationActiveOn = 2950;
-    if (dimensions[0] <= numbers.vp10)
+    if (dimensions[0] <= numbers.vp12)
+      equationActiveOn = 3850;
+    else if (dimensions[0] <= numbers.vp10)
       equationActiveOn = 300;
 
-    let contactArrowActiveOn = 4600;
+    let contactActiveOn = 4600;
+    if (dimensions[0] <= numbers.vp12)
+      contactActiveOn = 5300;
 
 
     /* don't change these */
@@ -493,7 +548,7 @@ const IndexPage = () => {
     else
       setEquationArrowActive(false);
 
-    if (distanceY >= contactArrowActiveOn)
+    if (distanceY >= contactActiveOn)
       setContactArrowActive(true);
     else
       setContactArrowActive(false);
