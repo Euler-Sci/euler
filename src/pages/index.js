@@ -557,8 +557,6 @@ const IndexPage = () => {
      * height when screen is skinnier */
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
 
-    console.log(distanceY);
-
     /* mobile optimize these */
     let cardsActiveOn = 700;
     if (dimensions[0] <= numbers.vp10)
