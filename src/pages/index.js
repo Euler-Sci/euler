@@ -132,7 +132,7 @@ const HeroPanel = () => {
             elegance of <Highlight>Leonhard Euler</Highlight> to your
             code.
         </p>
-        <HireLink to='#contact' >Hire Euler now.</HireLink>
+        <HireLink to='#contact'>Hire Euler now.</HireLink>
       </HeroText>
     </Hero>
   )
@@ -177,6 +177,9 @@ ul, p {
   li {
     margin: 2rem;
   }
+}
+${breakpoints.vp10} {
+  padding: 4rem 0.75rem;
 }
 ${breakpoints.vp7} {
   width: 20rem;
@@ -323,9 +326,6 @@ p {
   width: 800px;
   margin: 3rem auto 0.5rem auto;
   font-size: 2rem;
-}
-${breakpoints.vp10} {
-  margin-bottom: 10rem;
 }
 ${breakpoints.vp7} {
   p {
@@ -522,20 +522,21 @@ const IndexPage = () => {
     /* mobile optimize these */
     let cardsActiveOn = 700;
     if (dimensions[0] <= numbers.vp10)
-      cardsActiveOn = 300;
-    else if (dimensions[0] <= numbers.vp7)
+      cardsActiveOn = 400;
+    if (dimensions[0] <= numbers.vp7)
       cardsActiveOn = 400;
 
     let equationActiveOn = 2950;
     if (dimensions[0] <= numbers.vp12)
       equationActiveOn = 3850;
-    else if (dimensions[0] <= numbers.vp10)
-      equationActiveOn = 300;
+    if (dimensions[0] <= numbers.vp10)
+      equationActiveOn = 3450;
 
     let contactActiveOn = 4600;
     if (dimensions[0] <= numbers.vp12)
       contactActiveOn = 5300;
-
+    if (dimensions[0] <= numbers.vp10)
+      contactActiveOn = 4700;
 
     /* don't change these */
     if (distanceY >= cardsActiveOn)
