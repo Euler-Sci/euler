@@ -8,7 +8,7 @@ import { Arrow, Highlight } from '../global/elements.js';
 
 /* For services panel */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCodeBranch, faCogs, faMicrochip } from '@fortawesome/free-solid-svg-icons';
+import { faCodeBranch, faMicrochip, faCode, faWaveSquare, faSquareRootAlt } from '@fortawesome/free-solid-svg-icons';
 
 /* for about panel */
 import EquationPNG from '../images/equation.png';
@@ -277,7 +277,7 @@ const CardsPanel = ({ active, id }) => {
           </ul>
         </Card>
         <Card>
-          <Icon icon={faCogs} size={iconSize} />
+          <Icon icon={faMicrochip} size={iconSize} />
           <h1>High Performance Computing</h1>
           <ul>
             <li>Speed Optimization</li>
@@ -286,7 +286,7 @@ const CardsPanel = ({ active, id }) => {
           </ul>
         </Card>
         <Card>
-          <Icon icon={faMicrochip} size={iconSize} />
+          <Icon icon={faWaveSquare} size={iconSize} />
           <h1>Signal Processing</h1>
           <ul>
             <li>Image Processing</li>
@@ -295,7 +295,7 @@ const CardsPanel = ({ active, id }) => {
           </ul>
         </Card>
         <Card>
-          <Icon icon={faMicrochip} size={iconSize} />
+          <Icon icon={faCode} size={iconSize} />
           <h1>Software Development</h1>
           <ul>
             <li>Desktop Applications</li>
@@ -304,7 +304,7 @@ const CardsPanel = ({ active, id }) => {
           </ul>
         </Card>
         <Card>
-          <Icon icon={faMicrochip} size={iconSize} />
+          <Icon icon={faSquareRootAlt} size={iconSize} />
           <h1>Data Science</h1>
           <ul>
             <li>Statistical Analysis</li>
