@@ -132,7 +132,7 @@ const HeroPanel = () => {
             elegance of <Highlight>Leonhard Euler</Highlight> to your
             code.
         </p>
-        <HireLink to='/contact' >Hire Euler now.</HireLink>
+        <HireLink to='#contact' >Hire Euler now.</HireLink>
       </HeroText>
     </Hero>
   )
