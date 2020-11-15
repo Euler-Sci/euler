@@ -382,9 +382,8 @@ const EquationPanel = ({active, id}) => {
     <Equation id={id}>
       <EquationArrow className={active ? 'open' : ''}/>
       <p>
-        <Highlight>Euler Scientific</Highlight> is a partnership of software,
-        electrical, optics, and
-        mechanical engineers, and numerous other senior engineering
+        <Highlight>Euler</Highlight> is a partnership of software, electrical,
+        optics, and mechanical engineers, and numerous other senior engineering
         professionals.  We possess expertise in a number of disciplines,
         including mechanical and electrical design, high performance computing,
         power electronics, statistics, and both firmware and software.  We aim
@@ -393,11 +392,10 @@ const EquationPanel = ({active, id}) => {
         and integrity.
       </p>
       <p>
-        Our namesake, <Highlight>Leonhard Euler</Highlight>, whose picture
-        graces our landing page, was
-        one of the most prolific mathematicians of all time. His{' '}
-        <Highlight>insight</Highlight>{' '}
-        and <Highlight>creativity</Highlight> inspires us daily.
+        Our namesake,{' '}<Highlight>Leonhard Euler</Highlight>, whose picture
+        graces our landing page, was one of the most prolific mathematicians of
+        all time. His{' '}<Highlight>insight</Highlight>{' '}
+        and{' '}<Highlight>creativity</Highlight>{' '}inspires us daily.
       </p>
       <EquationImg src={EquationPNG} />
       <p>
