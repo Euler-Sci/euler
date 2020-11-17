@@ -8,7 +8,7 @@ import Logo from '../assets/svg/euler.svg';
 
 const HeaderDiv = styled.nav`
 background-color: ${props => props.shrink ? props.theme.darkGunmetal: props.theme.morningBlue + "60"};
-padding: ${props => props.shrink ? "1rem" : "1.5rem 0"};
+padding: ${props => props.shrink && !props.open ? "1rem" : "1.5rem 0"};
 display: flex;
 position: fixed;
 width: 100%;
@@ -61,6 +61,7 @@ ${breakpoints.vp4}{
   visibility: visible;
 }
 `
+
 const NavLink = styled(Link)`
 text-decoration: none;
 color: ${props => props.theme.secondary};
@@ -84,13 +85,13 @@ margin-right: 5rem;
 fill: ${props => props.theme.primary};
 transition: width ${props => props.theme.transition1} linear;
 height: auto;
-width: ${props => props.shrink ? "3rem" : "5rem"};
+width: ${props => props.shrink && !props.open ? "3rem" : "5rem"};
 ${breakpoints.vp7}{
-  width: ${props => props.shrink ? "2rem" : "5rem"};
+  width: ${props => props.shrink && !props.open ? "2rem" : "5rem"};
   margin-right: 3rem;
 }
 ${breakpoints.vp4}{
-  width: ${props => props.shrink ? "3rem" : "5rem"};
+  width: ${props => props.shrink && !props.open ? "3rem" : "5rem"};
 }
 `
 const Header = ({ theme }) => {
@@ -130,9 +131,9 @@ const Header = ({ theme }) => {
   }
 
   return (
-    <HeaderDiv shrink={shrink}>
+    <HeaderDiv open={open} shrink={shrink}>
       <Link to='/'>
-        <LogoStyled shrink={shrink}/>
+        <LogoStyled open={open} shrink={shrink}/>
       </Link>
       <Menu
         isOpen={open}
@@ -141,7 +142,7 @@ const Header = ({ theme }) => {
         color='white'
       />
       <Nav className={`${open ? "active" : ""}`}>
-        <NavLink onClick={closeMenu} to="/">Home</NavLink>
+        <NavLink onClick={closeMenu} to="#top">Home</NavLink>
         <NavLink onClick={closeMenu} to="#services">Services</NavLink>
         <NavLink onClick={closeMenu} to="#about">About</NavLink>
         <NavLink onClick={closeMenu} to="#contact">Contact</NavLink>

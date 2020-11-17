@@ -132,7 +132,7 @@ ${breakpoints.vp3} {
 `
 const HeroPanel = () => {
   return (
-    <Hero>
+    <Hero id="top">
       <HeroText>
         <h1>The elegance of mathematics solving your problems.</h1>
         <p>
