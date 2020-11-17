@@ -125,6 +125,10 @@ const Header = ({ theme }) => {
     return () => window.removeEventListener('scroll', onScroll)
   });
 
+  const closeMenu = () => {
+    setOpen(false);
+  }
+
   return (
     <HeaderDiv shrink={shrink}>
       <Link to='/'>
@@ -137,10 +141,10 @@ const Header = ({ theme }) => {
         color='white'
       />
       <Nav className={`${open ? "active" : ""}`}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="#services">Services</NavLink>
-        <NavLink to="#about">About</NavLink>
-        <NavLink to="#contact">Contact</NavLink>
+        <NavLink onClick={closeMenu} to="/">Home</NavLink>
+        <NavLink onClick={closeMenu} to="#services">Services</NavLink>
+        <NavLink onClick={closeMenu} to="#about">About</NavLink>
+        <NavLink onClick={closeMenu} to="#contact">Contact</NavLink>
       </Nav>
     </HeaderDiv>
   )
