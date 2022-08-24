@@ -291,7 +291,7 @@ const CardsPanel = ({ active, id }) => {
           <ul>
             <li>Image Processing</li>
             <li>Radar & Optical Processing</li>
-            <li>Speach & Acoustic Processing</li>
+            <li>Speech & Acoustic Processing</li>
           </ul>
         </Card>
         <Card>
