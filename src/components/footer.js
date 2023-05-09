@@ -48,8 +48,7 @@ const Footer = () => {
         <Card>
           <h4>About</h4>
           <p>
-            Euler is a partnership of engineers with expertise in almost
-            everything.
+            Euler is a partnership of engineers with a wide array of experience.
           </p>
         </Card>
         <Card style={{ textAlign: "center" }}>
