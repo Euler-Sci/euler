@@ -61,7 +61,7 @@ const Footer = () => {
         <Card>
           <h4>Contact</h4>
           <p>
-            Euler Sci, Inc.<br/>
+            Euler Scientific<br/>
             <a href="tel:+17603832086">(760) 383-2086</a><br/>
             <a href="mailto:info@euler-sci.com">info@euler-sci.com</a>
           </p>
